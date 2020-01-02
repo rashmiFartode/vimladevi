@@ -7,17 +7,17 @@ use Illuminate\Http\Request;
 use App\Http\Requests\QuickLinks\CreateQuickLinkRequest;
 use App\Http\Requests\QuickLinks\UpdateQuickLinkRequest;
 
-class QuicklinkController extends Controller
+class QuickLinkController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         return view('auth.quicklinks.index')->with('quicklinks', QuickLink::paginate(10));
@@ -39,14 +39,14 @@ class QuicklinkController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateQuickLinkRequest $request)
     {
         QuickLink::create([
             'name' => $request->name,
             'link' => $request->link,
         ]);
 
-        session()->flash('status', 'Success');
+        session()->flash('status' ,'Success');
 
         return redirect()->route('quicklink.index');
     }
@@ -54,10 +54,10 @@ class QuicklinkController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\QuickLink  $quickLink
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(QuickLink $quickLink)
     {
         //
     }
@@ -65,29 +65,32 @@ class QuicklinkController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\QuickLink  $quickLink
      * @return \Illuminate\Http\Response
      */
-    public function edit(QuickLink $quicklink)
+    public function edit($id)
     {
-        return view('auth.quicklinks.create')->with(compact('quicklink'));
+        // dd($quickLink);
+        return view('auth.quicklinks.create')->with('quicklink' , QuickLink::find($id));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\QuickLink  $quickLink
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateQuickLinkRequest $request, QuickLink $quicklink)
+    public function update(UpdateQuickLinkRequest $request, QuickLink $quickLink)
     {
         $data = $request->only(['name', 'link']);
-        $quicklink->update($data);
+        //storing attribute
+        $quickLink->update($data);
         //flashing session
-        if (isset($quicklink)) {
-            session()->flash('status', 'Success');
-        } else {
+        if(isset($quickLink)){
+        session()->flash('status', 'Success');
+        }
+        else {
             session()->flash('danger', 'Please try again');
         }
         //redirect user
@@ -97,16 +100,18 @@ class QuicklinkController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\QuickLink  $quickLink
      * @return \Illuminate\Http\Response
      */
-    public function destroy(QuickLink $quicklink)
+    public function destroy($id)
     {
-        $delete = $quicklink->delete();
-        if (isset($delete)) {
+        $id =  QuickLink::find($id);
+        $delete = $id->delete();
+        if(isset($delete)){
             //flashing session
             session()->flash('status', 'Success');
-        } else {
+        }
+        else {
             session()->flash('danger', 'Please try again');
         }
         //redirect user

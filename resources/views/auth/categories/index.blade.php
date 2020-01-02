@@ -45,7 +45,6 @@
                         <tr>
                             <td>Sr. no.</td>
                             <td>Title</td>
-                            <td></td>
                         </tr>
                          @foreach ($categories as $key => $category)
                         <tr>

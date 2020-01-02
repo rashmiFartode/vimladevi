@@ -5,9 +5,9 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 
-class Attendance extends Model
+class TeachingStaff extends Model
 {
-    protected $fillable = [ 'title','file' ]; //
+    protected $fillable = [ 'name','designation','department', 'file' ];
     public function deleteFile()
     {
         Storage::delete($this->file);

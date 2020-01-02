@@ -2,15 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Attendance;
+use App\TeachingStaff;
 use Illuminate\Http\Request;
-use App\Http\Requests\Attendances\CreateAttendancesRequest;
-use App\Http\Requests\Attendances\UpdateAttendancesRequest;
+use App\Http\Requests\Teaching\CreateTeachingStaffRequest;
+use App\Http\Requests\Teaching\UpdateTeachingStaffRequest;
 use Illuminate\Support\Facades\Storage;
 
-
-
-class AttendanceController extends Controller
+class TeachingStaffController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,7 +17,7 @@ class AttendanceController extends Controller
      */
     public function index()
     {
-        return view('auth.attendances.index')->with('attendances',Attendance::paginate(10));    //
+        return view('auth.teachingStaffs.index')->with('teachingStaffs', TeachingStaff::paginate(10));
     }
 
     /**
@@ -29,7 +27,7 @@ class AttendanceController extends Controller
      */
     public function create()
     {
-        return view('auth.attendances.create'); //
+        return view('auth.teachingStaffs.create');
     }
 
     /**
@@ -38,24 +36,26 @@ class AttendanceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateAttendancesRequest $request)
+    public function store(CreateTeachingStaffRequest $request)
     {
-        Attendance::create([
-            'title' => $request->title,
+        TeachingStaff::create([
+            'name' => $request->name,
+            'designation' => $request->designation,
+            'department' => $request->department,
             'file' => $this->StoreFile($request),
         ]);
 
         session()->flash('status', 'Created successfully');
-        return redirect()->route('attendances.index');    //
+        return redirect()->route('teachingStaffs.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Attendance  $attendance
+     * @param  \App\TeachingStaff  $teachingStaff
      * @return \Illuminate\Http\Response
      */
-    public function show(Attendance $attendance)
+    public function show(TeachingStaff $teachingStaff)
     {
         //
     }
@@ -63,60 +63,59 @@ class AttendanceController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Attendance  $attendance
+     * @param  \App\TeachingStaff  $teachingStaff
      * @return \Illuminate\Http\Response
      */
-    public function edit(Attendance $attendance)
+    public function edit(TeachingStaff $teachingStaff)
     {
-        return view('auth.attendances.create')->with('attendance', $attendance); //
+        return view('auth.teachingStaffs.create')->with('teachingStaff', $teachingStaff);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Attendance  $attendance
+     * @param  \App\TeachingStaff  $teachingStaff
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateAttendancesRequest $request, Attendance $attendance)
-    {
-        $data = $request->only(['title', 'file']);
+    public function update(UpdateTeachingStaffRequest $request, TeachingStaff $teachingStaff)
+    {   
+        $data = $request->only(['name','designation','department','file']);
         if ($request->hasFile('file')){
             $file = $this->StoreFile($request);
-            $attendance->deleteFile();
+            $teachingStaff->deleteFile();
             $data['file'] = $file;
         }
 
-        $attendance->update($data);
+        $teachingStaff->update($data);
         session()->flash('status', 'Updated successfully');
-        return redirect()->route('attendances.index'); //
+        return redirect()->route('teachingStaffs.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Attendance  $attendance
+     * @param  \App\TeachingStaff  $teachingStaff
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Attendance $attendance)
+    public function destroy(TeachingStaff $teachingStaff)
     {
-        $done = Storage::delete($attendance->file);
+        $done = Storage::delete($teachingStaff->file);
         if ($done) {
-            $attendance->delete();
+            $teachingStaff->delete();
             session()->flash('status', 'Deleted successfully');
-            return redirect()->route('attendances.index');
+            return redirect()->route('teachingStaffs.index');
         } else {
             session()->flash('warning', 'failed');
-            return redirect()->route('attendances.index');
-        } //
+            return redirect()->route('teachingStaffs.index');
+        }
     }
-
     private function StoreFile($request)
     {
         //if request has file
         if ($request->hasFile('file')) {
             //storing file
-            return $file = $request->file('file')->store('attendances', 'public');
+            return $file = $request->file('file')->store('teachingStaffs', 'public');
         }
     }
 }

@@ -14,7 +14,7 @@
                     <li class="nav-label">Master Table</li>
                     <li>
                         <a class="has-arrow" href="javascript:void()" aria-expanded="false">
-                            <i class="icon-note menu-icon"></i><span class="nav-text">Admin</span>
+                            <i class="icon-note menu-icon"></i><span class="nav-text">Forms</span>
                         </a>
                         <ul aria-expanded="false">
                             <li><a href="./form-basic.html">User</a></li>
@@ -24,16 +24,8 @@
                             <li><a href="./form-picker.html">Picker</a></li>
                         </ul>
                     </li>
-
-                    <li>
                     <a href="{{ route('quicklink.index') }}" aria-expanded="false">
                             <i class="icon-badge menu-icon"></i><span class="nav-text">Quicklinks</span>
-                        </a>
-                    </li>
-
-                    <li>
-                    <a href="{{ route('photos.index') }}" aria-expanded="false">
-                            <i class="icon-badge menu-icon"></i><span class="nav-text">Photos</span>
                         </a>
                     </li>
 
@@ -46,11 +38,6 @@
                     <li>
                     <a href="{{ route('notifications.index') }}" aria-expanded="false">
                             <i class="icon-badge menu-icon"></i><span class="nav-text">Notifications</span>
-                        </a>
-                    </li>
-                    <li>
-                    <a href="{{ route('attendances.index') }}" aria-expanded="false">
-                            <i class="icon-badge menu-icon"></i><span class="nav-text">Attendances</span>
                         </a>
                     </li>
                     <li>
@@ -73,6 +60,11 @@
                     <li>
                     <a href="{{ route('activities.index') }}" aria-expanded="false">
                             <i class="icon-badge menu-icon"></i><span class="nav-text">Recent Activities</span>
+                        </a>
+                    </li>
+                    <li>
+                    <a href="{{ route('teachingStaffs.index') }}" aria-expanded="false">
+                            <i class="icon-badge menu-icon"></i><span class="nav-text">Teaching Staff</span>
                         </a>
                     </li>
 

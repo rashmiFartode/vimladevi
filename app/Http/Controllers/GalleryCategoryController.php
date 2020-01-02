@@ -2,16 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
-use App\Photo;
+use App\GalleryCategory;
 use Illuminate\Http\Request;
 
-class PhotoController extends Controller
+class GalleryCategoryController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
     /**
      * Display a listing of the resource.
      *
@@ -19,7 +14,7 @@ class PhotoController extends Controller
      */
     public function index()
     {
-        return view('auth.photos.index')->with('photos', Photo::paginate(10));
+        //
     }
 
     /**
@@ -29,7 +24,7 @@ class PhotoController extends Controller
      */
     public function create()
     {
-        return  view('auth.photos.create');
+        //
     }
 
     /**
@@ -46,10 +41,10 @@ class PhotoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Photo  $photo
+     * @param  \App\GalleryCategory  $galleryCategory
      * @return \Illuminate\Http\Response
      */
-    public function show(Photo $photo)
+    public function show(GalleryCategory $galleryCategory)
     {
         //
     }
@@ -57,23 +52,22 @@ class PhotoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Photo  $photo
+     * @param  \App\GalleryCategory  $galleryCategory
      * @return \Illuminate\Http\Response
      */
-    public function edit(Photo $photo)
+    public function edit(GalleryCategory $galleryCategory)
     {
-        return  view('auth.photos.create')->with('category', Category::all())
-                                           ->with('photo', $photo) ;
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Photo  $photo
+     * @param  \App\GalleryCategory  $galleryCategory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Photo $photo)
+    public function update(Request $request, GalleryCategory $galleryCategory)
     {
         //
     }
@@ -81,10 +75,10 @@ class PhotoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Photo  $photo
+     * @param  \App\GalleryCategory  $galleryCategory
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Photo $photo)
+    public function destroy(GalleryCategory $galleryCategory)
     {
         //
     }

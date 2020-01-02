@@ -1,6 +1,6 @@
 @extends('auth.authLayouts.adminlayout')
 
-@if(isset($activity))
+@if(isset($activities))
 @section('title','Edit Activities')
 @else
 @section('title','Add Recent Activities')
@@ -19,7 +19,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header"> {{ isset($activity) ?  'Update' :  'Add' }}  Recent Activities</div>
+                <div class="card-header"> {{ isset($activities) ?  'Update' :  'Add' }}  Recent Activities</div>
 
                 <div class="card-body">
                     @if (session('status'))

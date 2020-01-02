@@ -48,7 +48,7 @@
                             <td>Desciption</td>
                             <td>File</td>
                         </tr>
-                         @foreach ($activities as $key =>$n )
+                         @foreach ($activities as $key => $n)
                         <tr>
                         <td>{{ ($activities->currentpage()-1) * $activities->perpage() + $key + 1 }}</td>
                         <td>{{ $n->title }}</td>

@@ -61,7 +61,7 @@
                         <tr>
                         <td>{{ ($files->currentpage()-1) * $files->perpage() + $key + 1 }}</td>
 
-                            <td><img src="{{ asset('storage/' . $file->files) }}" class="img-thumbail"/ ></td>
+                            <td><img src="{{ asset('storage/' . $file->files) }}" class="img-thumbail" ></td>
                             <td>
                                 <form action="{{ route('galleryimage.destroy', $file->id) }}" method="POST">
                                     @csrf

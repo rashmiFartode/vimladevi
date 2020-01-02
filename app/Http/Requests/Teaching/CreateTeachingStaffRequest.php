@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Samples;
+namespace App\Http\Requests\Teaching;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateSampleRequest extends FormRequest
+class CreateTeachingStaffRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class CreateSampleRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,10 @@ class CreateSampleRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|string| max:100|unique:teaching_staff',
+            'designation' => 'required|string',
+            'department' => 'required|string',
+            'file' => 'required|mimes:jpg,jpeg,png|max:10000',
         ];
     }
 }

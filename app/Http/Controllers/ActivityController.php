@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Activity;
-use Illuminate\Http\Request;
+use Illuminate\Http\Request; 
 use App\Http\Requests\Activities\CreateActivitiesRequest;
 use App\Http\Requests\Activities\UpdateActivitiesRequest;
 use Illuminate\Support\Facades\Storage;
@@ -19,7 +19,7 @@ class ActivityController extends Controller
     public function index()
     {
         return view('auth.activities.index')->with('activities', Activity::paginate(10));
-    } 
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -48,7 +48,7 @@ class ActivityController extends Controller
         session()->flash('status', 'Created successfully');
         return redirect()->route('activities.index');
     }
-    
+
     /**
      * Display the specified resource.
      *
@@ -79,7 +79,7 @@ class ActivityController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateActivitiesRequest $request, Activity $activity)
-    {
+    {    
         $data = $request->only(['title', 'description', 'file']);
         if ($request->hasFile('file')){
             $file = $this->StoreFile($request);
