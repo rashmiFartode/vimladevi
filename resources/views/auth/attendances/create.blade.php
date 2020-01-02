@@ -1,9 +1,9 @@
 @extends('auth.authLayouts.adminlayout')
 
-@if(isset($activity))
-@section('title','Edit Activities')
+@if(isset($attendance))
+@section('title','Edit Attendance')
 @else
-@section('title','Add Recent Activities')
+@section('title','Add Attendance')
 @endif
 @section('customcss')
     <style>
@@ -19,7 +19,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header"> {{ isset($activity) ?  'Update' :  'Add' }}  Recent Activities</div>
+                <div class="card-header"> {{ isset($attendance) ?  'Update' :  'Add' }}  Recent attendances</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -28,7 +28,7 @@
                         </div>
                     @endif
 
-                    @include('auth.activities.form')
+                    @include('auth.attendances.form')
 
                 </div>
             </div>

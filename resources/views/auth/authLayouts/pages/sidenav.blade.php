@@ -49,6 +49,11 @@
                         </a>
                     </li>
                     <li>
+                    <a href="{{ route('attendances.index') }}" aria-expanded="false">
+                            <i class="icon-badge menu-icon"></i><span class="nav-text">Attendances</span>
+                        </a>
+                    </li>
+                    <li>
                     <a href="{{ route('etenders.index') }}" aria-expanded="false">
                             <i class="icon-badge menu-icon"></i><span class="nav-text">E-Tenders notice</span>
                         </a>

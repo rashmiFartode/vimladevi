@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Activity;
+use App\Attendance;
 use Illuminate\Http\Request;
-use App\Http\Requests\Activities\CreateActivitiesRequest;
-use App\Http\Requests\Activities\UpdateActivitiesRequest;
+use App\Http\Requests\Attendances\CreateAttendancesRequest;
+use App\Http\Requests\Attendances\UpdateAttendancesRequest;
 use Illuminate\Support\Facades\Storage;
 
 
-class ActivityController extends Controller
+
+class AttendanceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +19,8 @@ class ActivityController extends Controller
      */
     public function index()
     {
-        return view('auth.activities.index')->with('activities', Activity::paginate(10));
-    } 
+        return view('auth.attendances.index')->with('attendances',Attendance::paginate(10));    //
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -28,7 +29,7 @@ class ActivityController extends Controller
      */
     public function create()
     {
-        return view('auth.activities.create');
+        return view('auth.attendances.create'); //
     }
 
     /**
@@ -37,25 +38,24 @@ class ActivityController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CreateActivitiesRequest $request)
+    public function store(CreateAttendancesRequest $request)
     {
-        Activity::create([
+        Attendance::create([
             'title' => $request->title,
-            'description' => $request->description,
             'file' => $this->StoreFile($request),
         ]);
 
         session()->flash('status', 'Created successfully');
-        return redirect()->route('activities.index');
+        return redirect()->route('attendances.index');    //
     }
-    
+
     /**
      * Display the specified resource.
      *
-     * @param  \App\Activity  $activity
+     * @param  \App\Attendance  $attendance
      * @return \Illuminate\Http\Response
      */
-    public function show(Activity $activity)
+    public function show(Attendance $attendance)
     {
         //
     }
@@ -63,62 +63,60 @@ class ActivityController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Activity  $activity
+     * @param  \App\Attendance  $attendance
      * @return \Illuminate\Http\Response
      */
-    public function edit(Activity $activity)
+    public function edit(Attendance $attendance)
     {
-        return view('auth.activities.create')->with('activity', $activity);
+        return view('auth.attendances.create')->with('attendance', $attendance); //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Activity  $activity
+     * @param  \App\Attendance  $attendance
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateActivitiesRequest $request, Activity $activity)
+    public function update(UpdateAttendancesRequest $request, Attendance $attendance)
     {
-        $data = $request->only(['title', 'description', 'file']);
+        $data = $request->only(['title', 'file']);
         if ($request->hasFile('file')){
             $file = $this->StoreFile($request);
-            $activity->deleteFile();
+            $attendance->deleteFile();
             $data['file'] = $file;
         }
 
-        $activity->update($data);
-        session()->flash('status', 'Created successfully');
-        return redirect()->route('activities.index');
+        $attendance->update($data);
+        session()->flash('status', 'Updated successfully');
+        return redirect()->route('attendances.index'); //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Activity  $activity
+     * @param  \App\Attendance  $attendance
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Activity $activity)
+    public function destroy(Attendance $attendance)
     {
-
-        $done = Storage::delete($activity->file);
+        $done = Storage::delete($attendance->file);
         if ($done) {
-            $activity->delete();
+            $attendance->delete();
             session()->flash('status', 'Deleted successfully');
-            return redirect()->route('activities.index');
+            return redirect()->route('attendances.index');
         } else {
             session()->flash('warning', 'failed');
-            return redirect()->route('activities.index');
-        }
+            return redirect()->route('attendances.index');
+        } //
     }
 
-    //handle the file storage request
     private function StoreFile($request)
     {
         //if request has file
         if ($request->hasFile('file')) {
             //storing file
-            return $file = $request->file('file')->store('activities', 'public');
+            return $file = $request->file('file')->store('attendances', 'public');
         }
     }
 }

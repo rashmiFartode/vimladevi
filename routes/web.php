@@ -28,6 +28,7 @@ Route::middleware(['auth'])->group(function(){
     Route::resource('etenders', 'EtenderController');
     Route::resource('news', 'NewsController');
     Route::resource('activities', 'ActivityController');
+    Route::resource('attendances', 'AttendanceController');
     Route::resource('blogs', 'BlogController');
     Route::resource('governmentSites', 'GovernmentSiteController');
     Route::resource('results', 'ResultController');
