@@ -27,16 +27,6 @@
                 </div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
-                    @endif
-                    @if (session('danger'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('danger') }}
-                    </div>
-                    @endif
                     @if($governmentSites->count() > 0)
                     <table class="table">
                         <tr>

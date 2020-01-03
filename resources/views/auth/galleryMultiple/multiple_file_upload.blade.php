@@ -23,12 +23,6 @@
                     <h1>Gallery</h1>
                 </div>
                 <div class="card-body">
-
-                    @if (session('status'))
-                    <div class="alert alert-success mb-5" role="alert">
-                        {{ session('status') }}
-                    </div>
-                    @endif
                     <form action="{{ route('upload') }}" method="POST" enctype="multipart/form-data">
                         <div class="form-row">
                             <div class="col-md-8">

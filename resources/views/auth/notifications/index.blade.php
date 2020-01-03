@@ -27,19 +27,6 @@
                 </div>
 
                 <div class="card-body">
-
-                    @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
-                    @endif
-
-                    @if (session('warning'))
-                    <div class="alert alert-warning" role="alert">
-                        {{ session('warning') }}
-                    </div>
-                    @endif
-
                     @if($notifications->count() > 0)
                     <table class="table">
                         <tr>
