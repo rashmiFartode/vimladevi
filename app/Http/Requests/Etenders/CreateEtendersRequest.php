@@ -24,7 +24,7 @@ class CreateEtendersRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|string| max:100 | unique:etenders ',
+            'title' => 'required|string|max:100|unique:etenders',
             'news_file' => 'required|mimes:pdf,doc,docx|max:10000',
         ];
     }

@@ -24,6 +24,13 @@
                             <li><a href="./form-picker.html">Picker</a></li>
                         </ul>
                     </li>
+
+                    <li>
+                    <a href="{{ route('blogs.index') }}" aria-expanded="false">
+                            <i class="icon-badge menu-icon"></i><span class="nav-text">Blog</span>
+                        </a>
+                    </li>
+
                     <li>
                     <a href="{{ route('quicklink.index') }}" aria-expanded="false">
                             <i class="icon-badge menu-icon"></i><span class="nav-text">Quicklinks</span>

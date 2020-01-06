@@ -24,7 +24,7 @@ class UpdateEtendersRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|sometimes|string| max:100 ',
+            'title' => 'required|sometimes|string|max:100',
             'etender_file' => 'required|sometimes|mimes:pdf,doc,docx|max:10000',
         ];
     }

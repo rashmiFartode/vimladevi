@@ -16,7 +16,7 @@
     <script type="text/javascript">
         tinymce.init({
             selector: '#content',
-            width: 600,
+            width: 800,
             height: 300,
             plugins: [
             'advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker',
@@ -42,7 +42,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header"> {{ isset($blog) ?  'Update' :  'Add' }}  Blogs</div>
 
@@ -62,7 +62,4 @@
 </div>
 @endsection
 @section('customscripts')
-<script>
-<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-</script>
 @endsection

@@ -24,7 +24,7 @@ class CreateNotificationsRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|string| max:100 | unique:notifications',
+            'title' => 'required|string|max:100|unique:notifications',
             'notification_file' => 'required|mimes:pdf',
             'new' => 'required|sometimes'
         ];

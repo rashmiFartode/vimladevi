@@ -24,7 +24,7 @@ class CreateNewsRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|string| max:100 | unique:news',
+            'title' => 'required|string|max:100|unique:news',
             'description' => 'required|string',
             'news_file' => 'required|mimes:pdf,doc,docx|max:10000',
         ];
