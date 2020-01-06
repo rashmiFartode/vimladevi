@@ -28,7 +28,7 @@ Route::middleware(['auth'])->group(function(){
     Route::resource('etenders', 'EtenderController');
     Route::resource('news', 'NewsController');
     Route::resource('activities', 'ActivityController');
-    Route::resource('attendances', 'AttendanceController');
+    Route::resource('teachingStaffs', 'TeachingStaffController');
     Route::resource('blogs', 'BlogController');
     Route::resource('governmentSites', 'GovernmentSiteController');
     Route::resource('results', 'ResultController');
@@ -38,7 +38,6 @@ Route::middleware(['auth'])->group(function(){
     Route::post('Gallery-image/upload', 'MultipleUploadController@upload')->name('upload');
     Route::delete('Gallery-image/{galleryMultiple}/delete', 'MultipleUploadController@destroy')->name('galleryimage.destroy');
     Route::resource('categories', 'CategoryController');
-    Route::resource('photos', 'PhotoController');
 });
 
 

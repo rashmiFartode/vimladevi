@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Attendances;
+namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateAttendancesRequest extends FormRequest
+class CreateTeachingStaffRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class UpdateAttendancesRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return false;
     }
 
     /**
@@ -24,8 +24,7 @@ class UpdateAttendancesRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|string| max:100',
-            'file' => 'mimes:pdf,doc,docx', //
+            //
         ];
     }
 }

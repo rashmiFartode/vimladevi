@@ -4,10 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
- 
-class Activity extends Model
+
+class GalleryCategory extends Model
 {
-    protected $fillable = [ 'title','description','file' ];
+    protected $fillable = [ 'category', 'file' ];
+
+    public function gallerycategories()
+    {
+        return $this->hasMany('App\Category');
+    }
 
     public function deleteFile()
     {

@@ -23,12 +23,6 @@
                     <h1>Gallery</h1>
                 </div>
                 <div class="card-body">
-
-                    @if (session('status'))
-                    <div class="alert alert-success mb-5" role="alert">
-                        {{ session('status') }}
-                    </div>
-                    @endif
                     <form action="{{ route('upload') }}" method="POST" enctype="multipart/form-data">
                         <div class="form-row">
                             <div class="col-md-8">
@@ -61,7 +55,7 @@
                         <tr>
                         <td>{{ ($files->currentpage()-1) * $files->perpage() + $key + 1 }}</td>
 
-                            <td><img src="{{ asset('storage/' . $file->files) }}" class="img-thumbail"/ ></td>
+                            <td><img src="{{ asset('storage/' . $file->files) }}" class="img-thumbail" ></td>
                             <td>
                                 <form action="{{ route('galleryimage.destroy', $file->id) }}" method="POST">
                                     @csrf

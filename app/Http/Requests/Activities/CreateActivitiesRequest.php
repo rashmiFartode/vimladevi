@@ -26,7 +26,7 @@ class CreateActivitiesRequest extends FormRequest
         return [
             'title' => 'required|string| max:100 | unique:activities',
             'description' => 'required|string',
-            'file' => 'required|mimes:pdf,doc,docx',
+            'file' => 'required|mimes:pdf,doc,docx|max:10000',
         ];
     }
 }

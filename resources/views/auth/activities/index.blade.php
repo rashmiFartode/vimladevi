@@ -28,17 +28,6 @@
 
                 <div class="card-body">
 
-                    @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
-                    @endif
-
-                    @if (session('warning'))
-                    <div class="alert alert-warning" role="alert">
-                        {{ session('warning') }}
-                    </div>
-                    @endif
 
                     @if($activities->count() > 0)
                     <table class="table">
@@ -48,7 +37,7 @@
                             <td>Desciption</td>
                             <td>File</td>
                         </tr>
-                         @foreach ($activities as $key =>$n )
+                         @foreach ($activities as $key => $n)
                         <tr>
                         <td>{{ ($activities->currentpage()-1) * $activities->perpage() + $key + 1 }}</td>
                         <td>{{ $n->title }}</td>

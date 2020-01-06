@@ -28,24 +28,11 @@
 
                 <div class="card-body">
 
-                    @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
-                    @endif
-
-                    @if (session('warning'))
-                    <div class="alert alert-warning" role="alert">
-                        {{ session('warning') }}
-                    </div>
-                    @endif
-
                     @if($categories->count() > 0)
                     <table class="table">
                         <tr>
                             <td>Sr. no.</td>
                             <td>Title</td>
-                            <td></td>
                         </tr>
                          @foreach ($categories as $key => $category)
                         <tr>

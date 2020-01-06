@@ -4,7 +4,7 @@
         <div class="nav-header">
             <div class="brand-logo">
                 <a href="index.html">
-                   <h1 class="text-capitalize text-white"> Bhisi </h1>
+                   <h1 class="text-capitalize text-white"> Vimladevi </h1>
                 </a>
             </div>
         </div>

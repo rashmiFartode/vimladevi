@@ -4,13 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use Illuminate\Http\Request;
+use App\Http\Requests\Categories\CreateCategoriesRequest;
+use App\Http\Requests\Categories\UpdateCategoriesRequest;
+use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
     /**
      * Display a listing of the resource.
      *
@@ -37,18 +36,13 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateCategoriesRequest $request)
     {
-
-        $this->validate($request, [
-            'name' => 'required|unique:categories|max:255',
-        ]);
-
         Category::create([
-            'name' => $request->name
+            'name' => $request->name,
         ]);
 
-        session()->flash('status', 'Created successfully');
+        session()->flash('status', 'Success');
         return redirect()->route('categories.index');
     }
 
@@ -71,7 +65,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('auth.categories.create')->with('category', $category);
+        return view('auth.activities.create');
     }
 
     /**
@@ -81,18 +75,13 @@ class CategoryController extends Controller
      * @param  \App\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(UpdateCategoriesRequest $request, Category $category)
     {
-        $data = $request->only(['name', 'link']);
+        $data = $request->only[ 'name' ];
         $category->update($data);
-        //flashing session
-        if (isset($category)) {
-            session()->flash('status', 'Success');
-        } else {
-            session()->flash('danger', 'Please try again');
-        }
-        //redirect user
+        session()->flash('status', 'Success');
         return redirect()->route('categories.index');
+
     }
 
     /**
@@ -103,14 +92,8 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        $delete = $category->delete();
-        if (isset($delete)) {
-            //flashing session
-            session()->flash('status', 'Success');
-        } else {
-            session()->flash('danger', 'Please try again');
-        }
-        //redirect user
+        $category->delete();
+        session()->flash('status', 'Success');
         return redirect()->route('categories.index');
     }
 }

@@ -2,7 +2,7 @@
                         @csrf
                         @if(isset($activity))
                            @method('PUT')
-                        @endif
+                        @endif 
 
                         <div class="form-group">
                             <label for="title">Title<sup class="text-danger h6">*</sup></label>

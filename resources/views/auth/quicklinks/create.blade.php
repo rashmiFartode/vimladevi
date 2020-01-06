@@ -27,9 +27,9 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
+                    
                     @include('auth.quicklinks.form')
-
+                    
                 </div>
             </div>
         </div>
