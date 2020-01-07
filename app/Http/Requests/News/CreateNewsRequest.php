@@ -26,7 +26,7 @@ class CreateNewsRequest extends FormRequest
         return [
             'title' => 'required|string|max:100|unique:news',
             'description' => 'required|string',
-            'news_file' => 'required|mimes:pdf,doc,docx|max:10000',
+            'news_file' => 'required|mimes:pdf,doc,docx,png,jpg,jpeg,gif|max:10000',
         ];
     }
 }

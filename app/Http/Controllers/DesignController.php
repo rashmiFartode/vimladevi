@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\GovernmentSite;
+use App\Activity;
+use App\QuickLink;
 
 use Illuminate\Http\Request;
 
@@ -8,8 +11,11 @@ class DesignController extends Controller
 {
     public function index()
     {
-        return view('frontEnd.index');
+        return view('frontEnd.index')->with('governmentSites', GovernmentSite::all())
+                                     ->with('activities', Activity::all())
+                                     ->with('quicklinks', QuickLink::all());
     }
+
     public function about()
     {
         return view('frontEnd.about');

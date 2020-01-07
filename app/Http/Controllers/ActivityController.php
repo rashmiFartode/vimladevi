@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Activity;
-use Illuminate\Http\Request; 
+use Illuminate\Http\Request;
 use App\Http\Requests\Activities\CreateActivitiesRequest;
 use App\Http\Requests\Activities\UpdateActivitiesRequest;
 use Illuminate\Support\Facades\Storage;
@@ -57,7 +57,7 @@ class ActivityController extends Controller
      */
     public function show(Activity $activity)
     {
-        //
+        return view('auth.activities.show')->with('activity', $activity);
     }
 
     /**
@@ -79,7 +79,7 @@ class ActivityController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateActivitiesRequest $request, Activity $activity)
-    {    
+    {
         $data = $request->only(['title', 'description', 'file']);
         if ($request->hasFile('file')){
             $file = $this->StoreFile($request);

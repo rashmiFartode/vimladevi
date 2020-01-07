@@ -43,32 +43,20 @@
             <div class="row">
                 <div class="col-md-3">
                     <div class="quick mt-5 main-box">
-                        <h4 class="title-heading1 text-center">Quick Links</h4><hr>
-                        <ul class="quick-link-ul list p-0">
-                            <li class="quick-link-li p-2"><a href="president_message" class="a1">Message from President</a></li>
-                            <li class="quick-link-li p-2"><a href="principal_message"  class="a1">Message from Principal</a></li>
-                            <li class="quick-link-li p-2"><a href="#"  class="a1">Papers and Publications</a></li>
-                            <li class="quick-link-li p-2"><a href="https://drive.google.com/open?id=1jePDdXI1pQOs_4QashMsJ3QNhpJS5Gpy" target="_blank"  class="a1">College Council</a></li>
-                            <li class="quick-link-li p-2"><a href="https://drive.google.com/open?id=18uQnLZj992LFiLlutMELbxYcFRqkGogj" target="_blank"  class="a1">Internal Assessment Grievances Committee</a></li>
-                            <li class="quick-link-li p-2"><a href="https://drive.google.com/open?id=1-mlngZWTGolmyHWKVBGFUVzJ-CdKfvZL" target="_blank"  class="a1">Women's Complaints Committee</a></li>
-                            <li class="quick-link-li p-2"><a href="https://drive.google.com/open?id=1kE4_k-qX8PR_dTqPyOywVk8lpOJN3ai_" target="_blank"  class="a1">Anti Ragging Committee</a></li>
-                            <li class="quick-link-li p-2"><a href="https://drive.google.com/open?id=11YfA33fQ5pnpstcjFQWOeXEdZzLCanb_" target="_blank"  class="a1">Collaboration with NGOs</a></li>
-                            <li class="quick-link-li p-2"><a href="#"  class="a1">Message from President</a></li>
-                            <li class="quick-link-li p-2"><a href="#"  class="a1">Message from President</a></li>
-                            <li class="quick-link-li p-2"><a href="#"  class="a1">Message from President</a></li>
-                            <li class="quick-link-li p-2"><a href="#"  class="a1">Message from President</a></li>
+                        <h4 class="title-heading1 text-center">Quick Links</h4>
+                        <ul class="quick-link-ul list p-0 mb-0">
+                            @foreach ($quicklinks as $quicklink)
+                                <li class="quick-link-li p-2"><a href="{{ $quicklink->link }}" class="a1">{{ $quicklink->name }}</a></li>
+                            @endforeach
                         </ul>
                     </div>
                     <div class="quick mt-5 main-box">
-                        <h4 class="title-heading1 text-center">Official Government Sites</h4><hr>
-                        <ul class="quick-link-ul list p-0" >
-                            <li class="quick-link-li p-2"><a href="http://ayush.gov.in/" target="_blank" class="a1">AYUSH Department, New Delhi</a></li>
-                            <li class="quick-link-li p-2"><a href="http://www.ccimindia.org/" target="_blank" class="a1">Central Council of Indian Medicine</a></li>
-                            <li class="quick-link-li p-2"><a href="http://www.muhs.ac.in/" target="_blank" class="a1">MUHS, Department of AYUSH</a></li>
-                            <li class="quick-link-li p-2"><a href="http://mahayush.gov.in/" target="_blank" class="a1">Directorate of Ayurveda</a></li>
-                            <li class="quick-link-li p-2"><a href="http://www.sssamiti.org/" target="_blank" class="a1">Fees Regulating Authority or Shikshan Shulka Samiti</a></li>
-                            <li class="quick-link-li p-2"><a href="http://www.pnsamiti.com/" target="_blank" class="a1">Admissions Regulating Authority or Pravesh Niyantran Samiti</a></li>
-                            <li class="quick-link-li p-2"><a href="http://www.dmer.org/" target="_blank" class="a1">Directorate of Medical Education & Reasearch</a></li>
+                        <h4 class="title-heading1 text-center">Official Government Sites</h4>
+                        <ul class="quick-link-ul list p-0 mb-0" >
+                            @foreach ($governmentSites as $governmentSite)
+                                <li class="quick-link-li p-2"><a href="{{ $governmentSite->link }}" target="_blank" class="a1">{{ $governmentSite->name }}</a></li>
+                            @endforeach
+
                         </ul>
                     </div>
                 </div>
@@ -145,65 +133,69 @@
                 <!--col-md-6 closed -->
                 <div class="col-md-3">
                     <div class="impLinks mt-5 main-box">
-                        <h4 class="title-heading1 text-center">Important Links</h4><hr>
+                        <h4 class="title-heading1 text-center">Important Links</h4>
                         <marquee class="p-2" height="170" direction="up" scrollamount="1" scrolldelay="1" onmouseover="this.stop()" onmouseout="this.start()">
-                            <ul style="padding: 0px;">
+                            <ul style="padding: 0px;margin-bottom:0">
                                 <li class="text-left"><i class="fa fa-hand-o-right"></i>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:black"><a target="_blank" href="#" style="color:black;">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</a></span></li>
-                            
+
                                 <li class="text-left"><i class="fa fa-hand-o-right"></i>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:black"><a target="_blank" href="#" style="color:black;">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</a></span></li>
-                            
+
                                 <li class="text-left"><i class="fa fa-hand-o-right"></i>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:black"><a target="_blank" href="#" style="color:black;">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</a></span></li>
-                        
+
                                 <li class="text-left"><i class="fa fa-hand-o-right"></i>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:black"><a target="_blank" href="#" style="color:black;">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</a></span></li>
-                            
+
                                 <li class="text-left"><i class="fa fa-hand-o-right"></i>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:black"><a target="_blank" href="#" style="color:black;">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</a></span></li>
                             </ul>
                         </marquee>
                     </div><!-- End important links -->
                     <div class="news mt-5 main-box">
-                        <h4 class="title-heading1 text-center">News</h4><hr>
+                        <h4 class="title-heading1 text-center">News</h4>
                         <marquee class="p-2" height="170" direction="up" scrollamount="1" scrolldelay="1" onmouseover="this.stop()" onmouseout="this.start()">
-                            <ul style="padding: 0px;">
-                                <li class="text-left"><img src="{{ asset('frontAssets/img/new.gif') }}" width="50px" height="50px">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:black"><a target="_blank" href="#" style="color:black;">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</a></span></li>
-                            
-                                <li class="text-left"><img src="{{ asset('frontAssets/img/new.gif') }}" width="50px" height="50px">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:black"><a target="_blank" href="#" style="color:black;">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</a></span></li>
-                            
-                                <li class="text-left"><img src="{{ asset('frontAssets/img/new.gif') }}" width="50px" height="50px">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:black"><a target="_blank" href="#" style="color:black;">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</a></span></li>
-                            
-                                <li class="text-left"><img src="{{ asset('frontAssets/img/new.gif') }}" width="50px" height="50px">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:black"><a target="_blank" href="#" style="color:black;">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</a></span></li>
-                            
-                                <li class="text-left"><img src="{{ asset('frontAssets/img/new.gif') }}" width="50px" height="50px">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:black"><a target="_blank" href="#" style="color:black;">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</a></span></li>
+                            <ul style="padding: 0px; margin-bottom:0">
+                                <li class="text-left">
+                                    <img src="{{ asset('frontAssets/img/new.gif') }}" width="50px" height="50px">
+                                    <span style="color:black">
+                                        <a target="_blank" href="#" style="color:black;">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</a>
+                                    </span>
+                                </li>
                             </ul>
                         </marquee>
                     </div>
                     <!-- End News -->
+
                     <div class="activity mt-5 main-box">
-                        <h4 class="title-heading1 text-center">Recent Activity</h4><hr>
+                        <h4 class="title-heading1 text-center">Recent Activity</h4>
                         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                             <ol class="carousel-indicators">
-                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                                 @php
+                                    $counter = 0;
+                                @endphp
+                                @foreach ($activities as $activity)
+                                 <li data-target="#carouselExampleIndicators" data-slide-to="0"   @if( $counter == 0 ) {{ "class= active " }}  @endif ></li>
+                                 @php
+                                    $counter = $counter + 1;
+                                @endphp
+                                @endforeach
                             </ol>
                             <div class="carousel-inner">
-                                <div class="carousel-item active">
+                                @php
+                                    $counter = 0;
+                                @endphp
+                                @foreach ($activities as $activity)
+                                <div class="carousel-item  @if( $counter == 0 ) {{ "active" }}  @endif">
                                     <div class="card">
-                                        <img src="{{ asset('frontAssets/img/vimladeviCollege/yogaday.png') }}" class="d-block w-100 card-img-top" alt="library">
+                                        <img src="{{ asset('storage/' . $activity->file) }}" class="d-block w-100 card-img-top" alt="library">
                                         <div class="card-body">
-                                        <h5 class="text-center">International Yoga Day</h5>
-                                        <p>On the occasion of third International Day of Yoga, Smt. Vimladevi Ayurvedic Medical College & Hospital in collaboration with.......</p>
+                                        <h5 class="text-center">{{ $activity->title }}</h5>
+                                        <p>{{ $activity->description }}</p>
                                         <a href="#">Read more</a>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="carousel-item">
-                                    <div class="card">
-                                        <img src="{{ asset('frontAssets/img/vimladeviCollege/awards3.jpg') }}" class="d-block w-100 card-img-top" alt="library">
-                                        <div class="card-body">
-                                            <h5 class="text-center">Lorem ipsum Library</h5>
-                                        </div>
-                                    </div>
-                                </div>
+                                @php
+                                    $counter = $counter + 1;
+                                @endphp
+                                @endforeach
                             </div>
                             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
