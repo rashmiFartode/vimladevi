@@ -1,4 +1,4 @@
-<form method="POST" action="{{  isset($notification) ? route('notifications.update', $notification->id) : route('notifications.store') }}" enctype="multipart/form-data">
+<form method="POST" action="{{  isset($notification) ? route('important_links.update', $notification->id) : route('important_links.store') }}" enctype="multipart/form-data">
     @csrf
     @if(isset($notification))
         @method('PUT')
@@ -22,7 +22,7 @@
         <a href="{{asset('storage/' . $notification->notification_file) }}" class="btn btn-info btn-sm" target="_blank">Click here to view file</a>
     </div>
     @endif
-    <div class="form-group">
+    {{-- <div class="form-group">
         <div class="form-check form-check-inline">
             <label class="form-check-label">
                 <input type="checkbox" class="form-check-input" name="new" value="1"
@@ -33,9 +33,9 @@
 
                 Blink as new</label>
         </div>
-    </div>
+    </div> --}}
     <div class="form-group">
         <button type="submit" class="btn btn-success mr-3">Submit</button>
-        <a href="{{ route('notifications.index') }}" class="btn btn-info">Back</a>
+        <a href="{{ route('important_links.index') }}" class="btn btn-info">Back</a>
     </div>
 </form>

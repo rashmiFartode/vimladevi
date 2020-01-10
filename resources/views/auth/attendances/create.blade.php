@@ -1,15 +1,15 @@
 @extends('auth.authLayouts.adminlayout')
 
-@if(isset($result))
-@section('title','Edit Results')
+@if(isset($attendance))
+@section('title','Edit Attendances')
 @else
-@section('title','Create Results')
+@section('title','Create Attendances')
 @endif
 @section('customcss')
     <style>
     .btn-info
     {
-        color: white; 
+        color: white;
     }
     </style>
 @endsection
@@ -19,7 +19,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header"> {{ isset($result) ?  'Update' :  'Create' }}  Results</div>
+                <div class="card-header"> {{ isset($attendance) ?  'Update' :  'Add' }}  Attendances</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -28,7 +28,7 @@
                         </div>
                     @endif
 
-                    @include('auth.results.form')
+                    @include('auth.attendances.form')
 
                 </div>
             </div>

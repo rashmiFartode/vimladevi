@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\News;
+namespace App\Http\Requests\Attendances;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateNewsRequest extends FormRequest
+class CreateAttendanceRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,9 @@ class UpdateNewsRequest extends FormRequest
     public function rules()
     {
         return [
+            'attendanceFor' => 'required|string',
             'title' => 'required|string|max:100',
-            'description' => 'required|string',
-            'news_file' => 'mimes:pdf,doc,docx,png,jpg,jpeg,gif|max:10000',
+            'file' => 'required|mimes:png,jpg,jpeg,pdf,doc,docx,ppt'
         ];
     }
 }

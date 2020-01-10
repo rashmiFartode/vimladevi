@@ -28,24 +28,13 @@
 
                 <div class="card-body">
 
-                    @if (session('status'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('status') }}
-                    </div>
-                    @endif
-
-                    @if (session('warning'))
-                    <div class="alert alert-warning" role="alert">
-                        {{ session('warning') }}
-                    </div>
-                    @endif
-
                     @if($results->count() > 0)
                     <table class="table">
                         <tr>
                             <td>Sr. no.</td>
                             <td>Title</td>
                             <td>File</td>
+                            <td></td>
                         </tr>
                          @foreach ($results as $key => $result)
                         <tr>

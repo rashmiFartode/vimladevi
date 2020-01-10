@@ -10,6 +10,7 @@
 
   <!-- Libraries CSS Files -->
   <link href="{{ asset('frontAssets/lib/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet">
   <link href="{{ asset('frontAssets/lib/animate/animate.min.css') }}" rel="stylesheet">
   <link href="{{ asset('frontAssets/lib/ionicons/css/ionicons.min.css') }}" rel="stylesheet">
   <link href="{{ asset('frontAssets/lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">

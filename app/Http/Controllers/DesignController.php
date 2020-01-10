@@ -1,10 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\GovernmentSite;
 use App\Activity;
+use App\News;
 use App\QuickLink;
-
+use App\Notification;
+use App\Result;
+use App\TeachingStaff;
 use Illuminate\Http\Request;
 
 class DesignController extends Controller
@@ -12,8 +16,10 @@ class DesignController extends Controller
     public function index()
     {
         return view('frontEnd.index')->with('governmentSites', GovernmentSite::all())
-                                     ->with('activities', Activity::all())
-                                     ->with('quicklinks', QuickLink::all());
+            ->with('activities', Activity::all())
+            ->with('quicklinks', QuickLink::all())
+            ->with('news', News::all())
+            ->with('notifications', Notification::all());
     }
 
     public function about()
@@ -94,7 +100,7 @@ class DesignController extends Controller
     }
     public function result()
     {
-        return view('frontEnd.result');
+        return view('frontEnd.result')->with('results', Result::paginate(10));
     }
     public function rognidan()
     {
@@ -118,7 +124,7 @@ class DesignController extends Controller
     }
     public function staff()
     {
-        return view('frontEnd.staff');
+        return view('frontEnd.staff')->with('staffs', TeachingStaff::paginate(15));
     }
     public function swachha_bharat()
     {
@@ -127,5 +133,26 @@ class DesignController extends Controller
     public function yoga()
     {
         return view('frontEnd.yoga');
+    }
+
+    public function news($id)
+    {
+        $news = News::findOrFail($id);
+        if (isset($news) == null) {
+            return response(404);
+        } else {
+
+            return view('frontEnd.news')->with('news', $news);
+        }
+    }
+    public function recent_activity($id)
+    {
+        $recent_activity = Activity::findOrFail($id);
+        if (isset($recent_activity) == null) {
+            return response(404);
+        } else {
+
+            return view('frontEnd.recent_activity')->with('recent_activity', $recent_activity);
+        }
     }
 }

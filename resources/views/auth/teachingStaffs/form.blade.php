@@ -14,41 +14,52 @@
                         <div class="form-group">
                             <label for="designation">Designation<sup class="text-danger h6">*</sup></label>
                             <select name="designation" id="designation" required class="form-control input-default @error('designation') is-invalid @enderror"  autofocus required  >
-                            
+
                             <option value="{{ isset($teachingStaff) ? $teachingStaff->designation : old('designation') }}">
                             @if(isset($teachingStaff))
                             {{ isset($teachingStaff) ? $teachingStaff->designation : old('designation') }}
-                            
+
                             @else   ---Select Department---
                             @endif
-                           
+
                             </option>
-                            <option value="Designation1">Designation1</option>
-                            <option value="Designation2">Designation2</option>
-                            <option value="Designation3">Designation3</option>
-                            <option value="Designation4">Designation4</option>
+                            <option value="reader">Reader</option>
+                            <option value="lecturer">Lecturer</option>
+                            <option value="professor">Professor</option>
+                            {{-- <option value="Designation4">Designation4</option> --}}
                             </select>
-                           
+
                             @error('designation')  <small class="text-danger">{{ $errors->first('designation') }}</small> @enderror
                         </div>
                         <div class="form-group">
-                            <label for="department">department<sup class="text-danger h6">*</sup></label>
-                            
+                            <label for="department">Department<sup class="text-danger h6">*</sup></label>
+
                             <select name="department" id="department"required class="form-control input-default @error('department') is-invalid @enderror"  autofocus required >{{ isset($teachingStaff) ? $teachingStaff->Department : old('department') }}
                             <option value="{{ isset($teachingStaff) ? $teachingStaff->department : old('department') }}">
                             @if(isset($teachingStaff))
                             {{ isset($teachingStaff) ? $teachingStaff->department : old('department') }}
-                            
+
                             @else   ---Select Department---
                             @endif</option>
-                            <option value="Department1">Department1</option>
-                            <option value="Department2">Department2</option>
-                            <option value="Department3">Department3</option>
-                            <option value="Department4">Department4</option>
+                            <option value="ayurved">Ayurved Samhita & Siddhant</option>
+                            <option value="rachana">Rachana Sharir</option>
+                            <option value="lecturer">Lecturer</option>
+                            <option value="kriya">Kriya Sharir</option>
+                            <option value="swasthavritta">Swasthavritta & Yoga</option>
+                            <option value="rasaShashtra">Rasa Shashtra & Bhaisajya Kalpana</option>
+                            <option value="dravyaguna">Dravyaguna</option>
+                            <option value="rogNidan">Rog Nidan & Vikriti Vigyan</option>
+                            <option value="agadTantra">Agad Tantra & Vidhi Vaidyaka</option>
+                            <option value="prasuti&StriRoga">Prasuti & Stri Roga</option>
+                            <option value="shalyatantra">Shalyatantra +(Ksharsutra Lab.)</option>
+                            <option value="shalakyaTantra">Shalakya Tantra</option>
+                            <option value="kayachikitsa">Kayachikitsa</option>
+                            <option value="panchkarma">Panchkarma</option>
+                            <option value="kaumarbhrityaBalaRog">Kaumarbhritya - Bala Rog</option>
                             </select>
                             @error('department')  <small class="text-danger">{{ $errors->first('department') }}</small> @enderror
                         </div>
-                        
+
 
                         <div class="form-group">
                             <label for="file">Image<sup class="text-danger h6">*</sup></label>

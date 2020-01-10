@@ -44,12 +44,11 @@ class NotificationController extends Controller
     {
         Notification::create([
             'title' => $request->title,
-            'new' => 1,
             'notification_file' => $this->StoreNotificationFile($request)
             ]);
 
-        session()->flash('status', 'notification created successfully');
-        return redirect()->route('notifications.index');
+        session()->flash('status', 'Added successfully');
+        return redirect()->route('important_links.index');
     }
 
     /**
@@ -69,9 +68,9 @@ class NotificationController extends Controller
      * @param  \App\Notification  $notification
      * @return \Illuminate\Http\Response
      */
-    public function edit(Notification $notification)
+    public function edit(Notification $important_link)
     {
-        return view('auth.notifications.create')->with('notification',$notification);
+        return view('auth.notifications.create')->with('notification', $important_link);
     }
 
     /**
@@ -81,10 +80,10 @@ class NotificationController extends Controller
      * @param  \App\Notification  $notification
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateNotificationsRequest $request, Notification $notification)
+    public function update(UpdateNotificationsRequest $request, Notification $important_link)
     {
         //requested attribute update
-        $data = $request->only(['title', 'notification_file', 'new']);
+        $data = $request->only(['title', 'notification_file']);
         //check if request has new image
         if ($request->hasFile('notification_file')) {
             //store new image
@@ -92,17 +91,17 @@ class NotificationController extends Controller
             //delete old image
 
             //deleteImage()defined in model
-            $notification->deleteFile() ;
+            $important_link->deleteFile() ;
 
             $data['notification_file'] = $notification_file;
         }
 
         //storing attribute
-        $notification->update($data);
+        $important_link->update($data);
         //flashing session
-        session()->flash('status', 'Notification updated successfully');
+        session()->flash('status', 'Updated successfully');
         //redirect user
-        return redirect()->route('notifications.index');
+        return redirect()->route('important_links.index');
     }
 
     /**
@@ -111,17 +110,17 @@ class NotificationController extends Controller
      * @param  \App\Notification  $notification
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Notification $notification)
+    public function destroy(Notification $important_link)
     {
-        $done = Storage::delete($notification->notification_file);
-        if($done){ 
-        $notification->delete();
-        session()->flash('status', 'notification deleted successfully');
-         return redirect()->route('notifications.index');
+        $done = Storage::delete($important_link->notification_file);
+        if($done){
+            $important_link->delete();
+        session()->flash('status', 'Deleted successfully');
+         return redirect()->route('important_links.index');
         }
         else{
         session()->flash('warning', 'failed');
-        return redirect()->route('notifications.index');
+        return redirect()->route('important_links.index');
         }
     }
     //handle the image storage request

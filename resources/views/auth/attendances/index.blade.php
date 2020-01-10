@@ -1,5 +1,5 @@
 @extends('auth.authLayouts.adminlayout')
-@section('title','Important links')
+@section('title','Attendances')
 @section('customcss')
 <style>
     .btn-info,.btn-success {
@@ -18,37 +18,42 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-6">
-                            <h1>Important Links</h1>
+                            <h1>Attendances</h1>
                         </div>
                         <div class="col-6">
-                            <a class="btn btn-primary float-right" href="{{route('important_links.create')}}">Add</a>
+                            <a class="btn btn-primary float-right" href="{{route('attendances.create')}}">Add</a>
                         </div>
                     </div>
                 </div>
 
                 <div class="card-body">
-                    @if($notifications->count() > 0)
+                    @if($attendances->count() > 0)
                     <table class="table">
                         <tr>
                             <td>Sr. no.</td>
                             <td>Title</td>
                             <td>File</td>
+                            <td></td>
                         </tr>
-                         @foreach ($notifications as $key => $notification)
-                        <tr>
-                        <td>{{ ($notifications->currentpage()-1) * $notifications->perpage() + $key + 1 }}</td>
-                        <td>{{ $notification->title }}
-                            @if($notification->new == 1)
-                            <sup><span class="badge badge-primary">New</span></sup>
-                            @endif
-                        </td>
+                        @php
+                        //     if($results->currentPage()->true)
+                        //     {
+                        //         $i= 1 + 10;
+                        //     }
+                        // $i=1;
 
-                            <td><a href="{{asset('storage/' . $notification->notification_file) }}" class="btn btn-info btn-sm" target="_blank"> View</a></td>
+                        @endphp
+                         @foreach ($attendances as $key => $n)
+                        <tr>
+                        <td>{{ ($attendances->currentpage()-1) * $attendances->perpage() + $key + 1 }}</td>
+                        <td>{{ $n->title }}</td>
+
+                            <td><a href="{{asset('storage/' . $n->file) }}" class="btn btn-info btn-sm" target="_blank"> View</a></td>
                             <td>
-                                <form action="{{ route('important_links.destroy', $notification->id) }}" method="POST">
+                                <form action="{{ route('attendances.destroy', $n->id) }}" method="POST">
                                     @csrf
                                     @method("DELETE")
-                                    <a href="{{ route('important_links.edit', $notification->id) }}"
+                                    <a href="{{ route('attendances.edit', $n->id) }}"
                                         class="btn btn-info btn-sm">Edit</a>
                                     <button class="btn btn-danger btn-sm" type="submit">Delete</button>
                                 </form>
@@ -57,13 +62,14 @@
                         @endforeach
                     </table>
                     @else
-                    <h3>No notification yet! </h3>
+                    <h3>No entry yet! </h3>
                     @endif
                 </div>
             </div>
         </div>
+
         <div class="col-md-12">
-            {{ $notifications->links() }}
+            {{ $attendances->links() }}
         </div>
     </div>
 </div>

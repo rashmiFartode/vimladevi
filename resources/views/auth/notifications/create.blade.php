@@ -1,11 +1,11 @@
 @extends('auth.authLayouts.adminlayout')
 
 @if(isset($notification))
-@section('title','Edit Notification')
+@section('title','Edit Important links')
 @else
-@section('title','Create Notification')
+@section('title','Create Important links')
 @endif
-@section('customcss') 
+@section('customcss')
     <style>
     .btn-info
     {
@@ -19,7 +19,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header"> {{ isset($notification) ?  'Update' :  'Create' }}  Notification</div>
+                <div class="card-header"> {{ isset($notification) ?  'Update' :  'Create' }}  Important Links</div>
 
                 <div class="card-body">
                     @if (session('status'))

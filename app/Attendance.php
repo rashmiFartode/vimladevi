@@ -5,14 +5,11 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 
-class Notification extends Model
+class Attendance extends Model
 {
-    protected $fillable = [ 'title', 'notification_file' ];
-
+    protected $fillable = ['attendanceFor', 'title', 'file'];
     public function deleteFile()
     {
-        Storage::delete($this->notification_file);
+        Storage::delete($this->file);
     }
-
-
 }

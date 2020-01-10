@@ -19,7 +19,7 @@
 @endsection
 @section('content-wrapper')
 <!-- </section> -->
-<section> 
+<section>
    <div class="banner">
     </div>
   </section>
@@ -61,10 +61,10 @@
                   <li class="quick-link-li p-2"><a href="https://drive.google.com/open?id=1-mlngZWTGolmyHWKVBGFUVzJ-CdKfvZL" target="_blank"  class="a1">Women's Complaints Committee</a></li>
                   <li class="quick-link-li p-2"><a href="https://drive.google.com/open?id=1kE4_k-qX8PR_dTqPyOywVk8lpOJN3ai_" target="_blank"  class="a1">Anti Ragging Committee</a></li>
                   <li class="quick-link-li p-2"><a href="https://drive.google.com/open?id=11YfA33fQ5pnpstcjFQWOeXEdZzLCanb_" target="_blank"  class="a1">Collaboration with NGOs</a></li>
-                  
+
                 </ul>
               </div>
-              
+
               <div class="quick mt-5 main-box">
                 <h4 class="title-heading1 text-center">Official Government Sites</h4><hr>
                 <ul class="quick-link-ul list p-0">
@@ -83,10 +83,22 @@
               <div class="container">
                 <div class="row">
                   <div class="col-md-12 text-center">
-                   <h4 class="title-heading1 text-center">Result</h4><hr>
-                  <table class="table table-borderless"> 
+                   <h4 class="title-heading1 text-center">Result</h4>
+                  <table class="table table-borderless">
                     <tbody>
-                      <tr>
+                        @if (count($results)>0)
+                        <tr>
+                            @foreach ($results as $result)
+                                <td><h5 class="text-center"><b>{{ $result->title }}</b></h5></td>
+                                <td><a href="{{ asset('storage/' . $result->file) }}" target="_blank">Click Here</a></td>
+                                </tr>
+                            @endforeach
+                        @else
+                            <tr>
+                                <td><h5 class="text-center"><b>No entry yet!</b></h5></td>
+                            </tr>
+                        @endif
+                     {{--  <tr>
                         <td><h5 class="text-center"><b>SUMMER 2019</b></h5></td>
                         <td><a href="https://drive.google.com/file/d/1fCrhqd5zYsLOntx40D8yLvWP06pyO7LQ/view" target="_blank">Click Here</a></td>
                       </tr>
@@ -131,10 +143,10 @@
                          <tr>
                           <td><h5 class="text-center"><b>SUMMER 2014</b></h5></td>
                           <td><a href="https://drive.google.com/file/d/1vQpAOXGRa02jEbLkBhXo-zEupw8MpZVL/view" target="_blank">Click Here</a></td>
-                        </tr>
+                        </tr>--}}
                       </tbody>
                     </table>
-                  </div> 
+                  </div>
                 </div>
               </div>
             </div>
@@ -143,7 +155,7 @@
       end content Section
     ============================-->
 
-    
+
 
   </main>
   @endsection

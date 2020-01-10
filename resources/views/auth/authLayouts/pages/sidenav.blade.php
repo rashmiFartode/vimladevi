@@ -44,13 +44,18 @@
                     </li>
 
                     <li>
-                    <a href="{{ route('notifications.index') }}" aria-expanded="false">
-                            <i class="icon-badge menu-icon"></i><span class="nav-text">Notifications</span>
+                    <a href="{{ route('important_links.index') }}" aria-expanded="false">
+                            <i class="icon-badge menu-icon"></i><span class="nav-text">Important Links</span>
                         </a>
                     </li>
                     <li>
                     <a href="{{ route('etenders.index') }}" aria-expanded="false">
                             <i class="icon-badge menu-icon"></i><span class="nav-text">E-Tenders notice</span>
+                        </a>
+                    </li>
+                    <li>
+                    <a href="{{ route('attendances.index') }}" aria-expanded="false">
+                            <i class="icon-badge menu-icon"></i><span class="nav-text">Attedances</span>
                         </a>
                     </li>
                     <li>

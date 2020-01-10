@@ -24,10 +24,10 @@ class CreateTeachingStaffRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string| max:100|unique:teaching_staff',
+            'name' => 'required|string|max:100|unique:teaching_staff',
             'designation' => 'required|string',
             'department' => 'required|string',
-            'file' => 'required|mimes:jpg,jpeg,png|max:10000',
+            'file' => 'required|mimes:jpg,jpeg,png,gif|max:10000',
         ];
     }
 }

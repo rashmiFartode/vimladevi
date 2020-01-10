@@ -32,19 +32,19 @@
                     <table class="table">
                         <tr>
                             <td>Sr. no.</td>
+                            <td>Image</td>
                             <td>Name</td>
                             <td>Designation</td>
                             <td>Department</td>
-                            <td>Image</td>
+                            <td></td>
                         </tr>
                          @foreach ($teachingStaffs as $key => $n)
                         <tr>
                         <td>{{ ($teachingStaffs->currentpage()-1) * $teachingStaffs->perpage() + $key + 1 }}</td>
+                        <td><img src="{{ asset('storage/' . $n->file) }}" alt="{{ $n->file }}" height="100px" width="80px"></td>
                         <td>{{ $n->name }}</td>
                         <td>{{ $n->designation }}</td>
                         <td>{{ $n->department }}</td>
-
-                            <td><a href="{{asset('storage/' . $n->file) }}" class="btn btn-info btn-sm" target="_blank"> View</a></td>
                             <td>
                                 <form action="{{ route('teachingStaffs.destroy', $n->id) }}" method="POST">
                                     @csrf

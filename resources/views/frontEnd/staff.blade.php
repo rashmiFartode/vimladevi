@@ -21,9 +21,9 @@
 }
 .card {
     position: relative;
-   
+
     display: flex;
-   
+
     background-color: #fff;
     background-clip: border-box;
     border: 1px solid rgba(0,0,0,.125);
@@ -35,7 +35,7 @@
 @endsection
 @section('content-wrapper')
 <!-- </section> -->
-<section> 
+<section>
    <div class="banner">
     </div>
   </section>
@@ -51,7 +51,7 @@
           <div class="row">
             <div class="col-md-12">
               <h2 class="title-heading1 text-center mb-4"><b>Staff</b></h2>
-             
+
             </div>
           </div>
         </div>
@@ -78,10 +78,10 @@
                   <li class="quick-link-li p-2"><a href="https://drive.google.com/open?id=1-mlngZWTGolmyHWKVBGFUVzJ-CdKfvZL" target="_blank"  class="a1">Women's Complaints Committee</a></li>
                   <li class="quick-link-li p-2"><a href="https://drive.google.com/open?id=1kE4_k-qX8PR_dTqPyOywVk8lpOJN3ai_" target="_blank"  class="a1">Anti Ragging Committee</a></li>
                   <li class="quick-link-li p-2"><a href="https://drive.google.com/open?id=11YfA33fQ5pnpstcjFQWOeXEdZzLCanb_" target="_blank"  class="a1">Collaboration with NGOs</a></li>
-                  
+
                 </ul>
               </div>
-              
+
               <div class="quick mt-5 main-box">
                 <h4 class="title-heading1 text-center">Official Government Sites</h4><hr>
                 <ul class="quick-link-ul list p-0">
@@ -104,34 +104,109 @@
                         <div class="col-md-12 main-box">
                         <h4 class="title-heading1 text-center">Teaching Staff</h4><hr>
                         <div class="row overflow-table">
-                        <div class="col-md-6"> 
+                            @foreach ($staffs as $staff)
+                            <div class="col-md-6 mb-3">
                           <div class="card">
                           <div class="row no-gutters">
-                            <div class="col-md-5">
-                              <img src="{{ asset('frontAssets/images/staff/3.jpg') }}" class="card-img img-thumbnail m-3" alt="Teachers">
+                            <div class="col-4">
+                              <img src="{{ asset('storage/'.$staff->file) }}" class="img-thumbnail m-3" alt="Teachers" width="115px" height="115px">
                             </div>
-                            <div class="col-md-7">
+                            <div class="col-8">
+                              <div class="card-body">
+                                <h5 class="card-title"></h5>
+                                  <ul class="list-none pl-2">
+                                  <li><h5 class="font-weight-bold my-3">{{ $staff->name }}</h5></li>
+                                        <li>
+                                          <ul class="list-inline">
+                                              <li class="list-inline-item"><i class="fas fa-user-tie mr-3"></i></li>
+                                            <li class="list-inline-item">{{ ucfirst($staff->designation) }}</li>
+                                          </ul>
+                                        </li>
+                                        <li>
+                                          <ul class="list-inline">
+                                              <li class="list-inline-item"><i class="fas fa-archway mr-3"></i></li>
+                                              <li class="list-inline-item">
+                                                @if ($staff->department == "ayurved")
+                                                    {{ 'Ayurved Samhita & Siddhant' }}
+                                                @elseif ($staff->department == "rachana")
+                                                    {{ 'Rachana Sharir' }}
+                                                @elseif($staff->department == "lecturer")
+                                                    {{ 'Lecturer' }}
+                                                @elseif($staff->department == "kriya")
+                                                    {{ 'Kriya Sharir' }}
+                                                @elseif($staff->department == "swasthavritta")
+                                                    {{ 'Swasthavritta & Yoga' }}
+                                                @elseif($staff->department == "rasaShashtra")
+                                                    {{ 'Rasa Shashtra & Bhaisajya Kalpana' }}
+                                                @elseif($staff->department == "dravyaguna")
+                                                    {{ 'Dravyaguna' }}
+                                                @elseif($staff->department == "rogNidan")
+                                                    {{ 'Rog Nidan & Vikriti Vigyan' }}
+                                                @elseif($staff->department == "agadTantra")
+                                                    {{'Agad Tantra & Vidhi Vaidyaka'}}
+                                                @elseif($staff->department == "prasuti&StriRoga")
+                                                    {{'Prasuti & Stri Roga'}}
+                                                @elseif($staff->department == "shalyatantra")
+                                                    {{'Shalyatantra +(Ksharsutra Lab.)'}}
+                                                @elseif($staff->department == "kayachikitsa")
+                                                    {{'Kayachikitsa'}}
+                                                @elseif($staff->department == "panchkarma")
+                                                    {{'Panchkarma'}}
+                                                @elseif($staff->department == "kaumarbhrityaBalaRog")
+                                                    {{'Kaumarbhritya - Bala Rog'}}
+                                                @endif
+                                            </li>
+                                          </ul>
+                                        </li>
+                                    </ul>
+                              </div>
+                            </div>
+                          </div>
+                          </div>
+                        </div>
+                        @endforeach
+                            <hr>
+                        <div class="col-md-6">
+                          <div class="card">
+                          <div class="row no-gutters">
+                            <div class="col-4">
+                              <img src="{{ asset('frontAssets/images/staff/3.jpg') }}" class="img-thumbnail m-3" alt="Teachers" width="115px" height="115px">
+                            </div>
+                            <div class="col-8">
                               <div>
                               <div class="card-body">
                                 <h5 class="card-title"></h5>
                                 <!-- <p class="card-text"> -->
-                                  <ul class="list-none">
-                                    <li><b>Name:</b></li>
-                                    <li>Raju Tatewar</li> 
-                                            
-                               <!--  DOB: 05/03/1968<br> -->
-                               <!--  UG Qualification: BAMS<br>
-                                PG Qualificaton: MD (Samhita Siddhant)<br> -->
-                               <li> <b>Designation:</b> Reader</li>
-                                <li><b>Department:</b> Ayurved Samhita & Siddhant</li>
-                              </ul>
+                                  <ul class="list-none pl-2">
+                                        <li><h5 class="font-weight-bold my-3">Raju Tatewar</h5></li>
+                                        <li>
+                                          <ul class="list-inline">
+                                              <li class="list-inline-item"><i class="fas fa-user-tie mr-3"></i></li>
+                                              <li class="list-inline-item">Reader</li>
+                                          </ul>
+                                        </li>
+                                        <li>
+                                          <ul class="list-inline">
+                                              <li class="list-inline-item"><i class="fas fa-archway mr-3"></i></li>
+                                              <li class="list-inline-item">Ayurved Samhita<br> & Siddhant</li>
+                                          </ul>
+                                        </li>
+                                      {{-- <li><i class="fas fa-archway mr-3"></i>Ayurved Samhita & Siddhant</li> --}}
+                                    {{-- <li><b>Name:</b></li>
+                                    <li>Raju Tatewar</li>  --}}
+                                    <!--  DOB: 05/03/1968<br> -->
+                                    <!--  UG Qualification: BAMS<br>
+                                        PG Qualificaton: MD (Samhita Siddhant)<br> -->
+                                    {{-- <li> <b>Designation:</b> Reader</li>
+                                        <li><b>Department:</b> Ayurved Samhita & Siddhant</li> --}}
+                                    </ul>
                               </div>
                               </div>
                             </div>
                           </div>
                           </div>
                         </div>
-                        <div class="col-md-6"> 
+                        <div class="col-md-6">
                           <div class="card mb-3">
                           <div class="row no-gutters">
                             <div class="col-md-5">
@@ -143,7 +218,7 @@
                                <ul class="list-none">
                                   <li><b>Name:</b></li>
                                   <li>Pranita Bhakare</li>
-                                               
+
                              <!--    DOB: 19/12/1976<br> -->
                               <!--   UG Qualification: BA (Sanskrit)<br>
                                 PG Qualificaton: MA (Sanskrit)<br> -->
@@ -157,7 +232,7 @@
                           </div>
                           </div>
                         </div>
-                        <div class="col-md-6"> 
+                        <div class="col-md-6">
                           <div class="card mb-3">
                           <div class="row no-gutters">
                             <div class="col-md-5">
@@ -169,7 +244,7 @@
                                 <ul class="list-none">
                                 <li><b>Name:</b></li>
                                   <li>Anju Thaware</li>
-                                            
+
                                <!--  DOB: 16/06/1986<br>
                                 UG Qualification: BAMS<br>
                                 PG Qualificaton: MD (Samhita)<br> -->
@@ -183,7 +258,7 @@
                           </div>
                           </div>
                         </div>
-                        <div class="col-md-6"> 
+                        <div class="col-md-6">
                           <div class="card mb-3">
                           <div class="row no-gutters">
                             <div class="col-md-5">
@@ -195,7 +270,7 @@
                                 <ul class="list-none">
                                 <li><b>Name:</b></li>
                                  <li>Jayshri Damke</li>
-                                            
+
                                 <!-- DOB:07/02/1984<br>
                                 UG Qualification: BAMS<br>
                                 PG Qualificaton: MD (Ayurved Samhita)<br> -->
@@ -209,7 +284,7 @@
                           </div>
                           </div>
                         </div>
-                        <div class="col-md-6"> 
+                        <div class="col-md-6">
                           <div class="card mb-3">
                           <div class="row no-gutters">
                             <div class="col-md-5">
@@ -220,7 +295,7 @@
                                <ul class="list-none">
                                <b>Name:</b>
                                <li>Swati Kulkarni</li>
-                                            
+
                                <!--  DOB: 15/01/1976<br>
                                 UG Qualification: BAMS<br>
                                 PG Qualificaton: MD (Rachana Sharir)<br> -->
@@ -234,7 +309,7 @@
                           </div>
                           </div>
                         </div>
-                         <div class="col-md-6"> 
+                         <div class="col-md-6">
                           <div class="card mb-3">
                           <div class="row no-gutters">
                             <div class="col-md-5">
@@ -245,7 +320,7 @@
                                 <ul class="list-none">
                                 <li><b>Name:</b></li>
                                   <li>Vineet Bharne</li>
-                                              
+
                                <!--  DOB: 06/06/1985<br>
                                 UG Qualification: BAMS<br>
                                 PG Qualificaton: MD (Rachana Sharir)<br> -->
@@ -259,7 +334,7 @@
                           </div>
                           </div>
                         </div>
-                         <div class="col-md-6"> 
+                         <div class="col-md-6">
                           <div class="card mb-3">
                           <div class="row no-gutters">
                             <div class="col-md-5">
@@ -269,7 +344,7 @@
                               <div class="card-body">
                                 <ul class="list-none">
                                   <li><b>Name:</b></li>
-                                  <li>Ashish Agarwal</li>             
+                                  <li>Ashish Agarwal</li>
                                 <!-- DOB: 05/06/1976<br>
                                 UG Qualification: BAMS<br>
                                 PG Qualificaton: MD (Kriya Sharir)<br> -->
@@ -283,7 +358,7 @@
                           </div>
                           </div>
                         </div>
-                         <div class="col-md-6"> 
+                         <div class="col-md-6">
                           <div class="card mb-3">
                           <div class="row no-gutters">
                             <div class="col-md-5">
@@ -294,7 +369,7 @@
                                <ul class="list-none">
                                 <li><b>Name:</b></li>
                                   <li>Prashant Chandekar</li>
-                                             
+
                                <!--  DOB: 16/08/1983<br>
                                 UG Qualification: BAMS<br>
                                 PG Qualificaton: MD (Kriya Sharir)<br> -->
@@ -308,7 +383,7 @@
                           </div>
                           </div>
                         </div>
-                         <div class="col-md-6"> 
+                         <div class="col-md-6">
                           <div class="card mb-3">
                           <div class="row no-gutters">
                             <div class="col-md-5">
@@ -332,12 +407,12 @@
                           </div>
                           </div>
                         </div>
-                         <div class="col-md-6"> 
+                         <div class="col-md-6">
                           <div class="card mb-3">
                           <div class="row no-gutters">
                             <div class="col-md-5">
                               <img src="{{ asset('frontAssets/images/staff/9.jpg') }}" class="card-img img-thumbnail m-3" alt="Teachers">
-                              
+
                             </div>
                             <div class="col-md-7">
                               <div class="card-body">
@@ -357,12 +432,12 @@
                           </div>
                           </div>
                         </div>
-                        <div class="col-md-6"> 
+                        <div class="col-md-6">
                           <div class="card mb-3">
                           <div class="row no-gutters">
                             <div class="col-md-5">
                               <img src="{{ asset('frontAssets/images/staff/10.jpg') }}" class="card-img img-thumbnail m-3" alt="Teachers">
-                              
+
                             </div>
                             <div class="col-md-7">
                               <div class="card-body">
@@ -382,12 +457,12 @@
                           </div>
                           </div>
                         </div>
-                        <div class="col-md-6"> 
+                        <div class="col-md-6">
                           <div class="card mb-3">
                           <div class="row no-gutters">
                             <div class="col-md-5">
                               <img src="{{ asset('frontAssets/images/staff/11.jpg') }}" class="card-img img-thumbnail m-3" alt="Teachers">
-                              
+
                             </div>
                             <div class="col-md-7">
                               <div class="card-body">
@@ -407,12 +482,12 @@
                           </div>
                           </div>
                         </div>
-                        <div class="col-md-6"> 
+                        <div class="col-md-6">
                           <div class="card mb-3">
                           <div class="row no-gutters">
                             <div class="col-md-5">
                               <img src="{{ asset('frontAssets/images/staff/11.png') }}" class="card-img img-thumbnail m-3" alt="Teachers">
-                              
+
                             </div>
                             <div class="col-md-7">
                               <div class="card-body">
@@ -432,12 +507,12 @@
                           </div>
                           </div>
                         </div>
-                        <div class="col-md-6"> 
+                        <div class="col-md-6">
                           <div class="card mb-3">
                           <div class="row no-gutters">
                             <div class="col-md-5">
                               <img src="{{ asset('frontAssets/images/staff/14.jpeg') }}" class="card-img img-thumbnail m-3" alt="Teachers">
-                              
+
                             </div>
                             <div class="col-md-7">
                               <div class="card-body">
@@ -457,12 +532,12 @@
                           </div>
                           </div>
                         </div>
-                        <div class="col-md-6"> 
+                        <div class="col-md-6">
                           <div class="card mb-3">
                           <div class="row no-gutters">
                             <div class="col-md-5">
                               <img src="{{ asset('frontAssets/images/staff/15.jpeg') }}" class="card-img img-thumbnail m-3" alt="Teachers">
-                              
+
                             </div>
                             <div class="col-md-7">
                               <div class="card-body">
@@ -482,12 +557,12 @@
                           </div>
                           </div>
                         </div>
-                        <div class="col-md-6"> 
+                        <div class="col-md-6">
                           <div class="card mb-3">
                           <div class="row no-gutters">
                             <div class="col-md-5">
                               <img src="{{ asset('frontAssets/images/staff/16.jpeg') }}" class="card-img img-thumbnail m-3" alt="Teachers">
-                              
+
                             </div>
                             <div class="col-md-7">
                               <div class="card-body">
@@ -507,12 +582,12 @@
                           </div>
                           </div>
                         </div>
-                        <div class="col-md-6"> 
+                        <div class="col-md-6">
                           <div class="card mb-3">
                           <div class="row no-gutters">
                             <div class="col-md-5">
                               <img src="{{ asset('frontAssets/images/staff/17.jpeg') }}" class="card-img img-thumbnail m-3" alt="Teachers">
-                              
+
                             </div>
                             <div class="col-md-7">
                               <div class="card-body">
@@ -532,12 +607,12 @@
                           </div>
                           </div>
                         </div>
-                        <div class="col-md-6"> 
+                        <div class="col-md-6">
                           <div class="card mb-3">
                           <div class="row no-gutters">
                             <div class="col-md-5">
                               <img src="{{ asset('frontAssets/images/staff/18.jpeg') }}" class="card-img img-thumbnail m-3" alt="Teachers">
-                              
+
                             </div>
                             <div class="col-md-7">
                               <div class="card-body">
@@ -557,12 +632,12 @@
                           </div>
                           </div>
                         </div>
-                        <div class="col-md-6"> 
+                        <div class="col-md-6">
                           <div class="card mb-3">
                           <div class="row no-gutters">
                             <div class="col-md-5">
                               <img src="{{ asset('frontAssets/images/staff/19.jpeg') }}" class="card-img img-thumbnail m-3" alt="Teachers">
-                              
+
                             </div>
                             <div class="col-md-7">
                               <div class="card-body">
@@ -582,12 +657,12 @@
                           </div>
                           </div>
                         </div>
-                        <div class="col-md-6"> 
+                        <div class="col-md-6">
                           <div class="card mb-3">
                           <div class="row no-gutters">
                             <div class="col-md-5">
                               <img src="{{ asset('frontAssets/images/staff/20.jpeg') }}" class="card-img img-thumbnail m-3" alt="Teachers">
-                              
+
                             </div>
                             <div class="col-md-7">
                               <div class="card-body">
@@ -607,12 +682,12 @@
                           </div>
                           </div>
                         </div>
-                        <div class="col-md-6"> 
+                        <div class="col-md-6">
                           <div class="card mb-3">
                           <div class="row no-gutters">
                             <div class="col-md-5">
                               <img src="{{ asset('frontAssets/images/staff/21.jpeg') }}" class="card-img img-thumbnail m-3" alt="Teachers">
-                              
+
                             </div>
                             <div class="col-md-7">
                               <div class="card-body">
@@ -632,12 +707,12 @@
                           </div>
                           </div>
                         </div>
-                        <div class="col-md-6"> 
+                        <div class="col-md-6">
                           <div class="card mb-3">
                           <div class="row no-gutters">
                             <div class="col-md-5">
                               <img src="{{ asset('frontAssets/images/staff/22.jpeg') }}" class="card-img img-thumbnail m-3" alt="Teachers">
-                              
+
                             </div>
                             <div class="col-md-7">
                               <div class="card-body">
@@ -657,12 +732,12 @@
                           </div>
                           </div>
                         </div>
-                        <div class="col-md-6"> 
+                        <div class="col-md-6">
                           <div class="card mb-3">
                           <div class="row no-gutters">
                             <div class="col-md-5">
                               <img src="{{ asset('frontAssets/images/staff/23.jpeg') }}" class="card-img img-thumbnail m-3" alt="Teachers">
-                              
+
                             </div>
                             <div class="col-md-7">
                               <div class="card-body">
@@ -682,12 +757,12 @@
                           </div>
                           </div>
                         </div>
-                         <div class="col-md-6"> 
+                         <div class="col-md-6">
                           <div class="card mb-3">
                           <div class="row no-gutters">
                             <div class="col-md-5">
                               <img src="{{ asset('frontAssets/images/staff/24.jpeg') }}" class="card-img img-thumbnail m-3" alt="Teachers">
-                              
+
                             </div>
                             <div class="col-md-7">
                               <div class="card-body">
@@ -707,12 +782,12 @@
                           </div>
                           </div>
                         </div>
-                         <div class="col-md-6"> 
+                         <div class="col-md-6">
                           <div class="card mb-3">
                           <div class="row no-gutters">
                             <div class="col-md-5">
                               <img src="{{ asset('frontAssets/images/staff/25.jpeg') }}" class="card-img img-thumbnail m-3" alt="Teachers">
-                              
+
                             </div>
                             <div class="col-md-7">
                               <div class="card-body">
@@ -732,12 +807,12 @@
                           </div>
                           </div>
                         </div>
-                         <div class="col-md-6"> 
+                         <div class="col-md-6">
                           <div class="card mb-3">
                           <div class="row no-gutters">
                             <div class="col-md-5">
                               <img src="{{ asset('frontAssets/images/staff/26.jpeg') }}" class="card-img img-thumbnail m-3" alt="Teachers">
-                              
+
                             </div>
                             <div class="col-md-7">
                               <div class="card-body">
@@ -757,12 +832,12 @@
                           </div>
                           </div>
                         </div>
-                         <div class="col-md-6"> 
+                         <div class="col-md-6">
                           <div class="card mb-3">
                           <div class="row no-gutters">
                             <div class="col-md-5">
                               <img src="{{ asset('frontAssets/images/staff/27.jpeg') }}" class="card-img img-thumbnail m-3" alt="Teachers">
-                              
+
                             </div>
                             <div class="col-md-7">
                               <div class="card-body">
@@ -782,12 +857,12 @@
                           </div>
                           </div>
                         </div>
-                         <div class="col-md-6"> 
+                         <div class="col-md-6">
                           <div class="card mb-3">
                           <div class="row no-gutters">
                             <div class="col-md-5">
                               <img src="{{ asset('frontAssets/images/staff/28.jpeg') }}" class="card-img img-thumbnail m-3" alt="Teachers">
-                              
+
                             </div>
                             <div class="col-md-7">
                               <div class="card-body">
@@ -807,12 +882,12 @@
                           </div>
                           </div>
                         </div>
-                         <div class="col-md-6"> 
+                         <div class="col-md-6">
                           <div class="card mb-3">
                           <div class="row no-gutters">
                             <div class="col-md-5">
                               <img src="{{ asset('frontAssets/images/staff/29.jpeg') }}" class="card-img img-thumbnail m-3" alt="Teachers">
-                              
+
                             </div>
                             <div class="col-md-7">
                               <div class="card-body">
@@ -832,12 +907,12 @@
                           </div>
                           </div>
                         </div>
-                         <div class="col-md-6"> 
+                         <div class="col-md-6">
                           <div class="card mb-3">
                           <div class="row no-gutters">
                             <div class="col-md-5">
                               <img src="{{ asset('frontAssets/images/staff/30.jpeg') }}" class="card-img img-thumbnail m-3" alt="Teachers">
-                              
+
                             </div>
                             <div class="col-md-7">
                               <div class="card-body">
@@ -857,12 +932,12 @@
                           </div>
                           </div>
                         </div>
-                         <div class="col-md-6"> 
+                         <div class="col-md-6">
                           <div class="card mb-3">
                           <div class="row no-gutters">
                             <div class="col-md-5">
                               <img src="{{ asset('frontAssets/images/staff/31.jpeg') }}" class="card-img img-thumbnail m-3" alt="Teachers">
-                              
+
                             </div>
                             <div class="col-md-7">
                               <div class="card-body">
@@ -882,12 +957,12 @@
                           </div>
                           </div>
                         </div>
-                         <div class="col-md-6"> 
+                         <div class="col-md-6">
                           <div class="card mb-3">
                           <div class="row no-gutters">
                             <div class="col-md-5">
                               <img src="{{ asset('frontAssets/images/staff/32.jpeg') }}" class="card-img img-thumbnail m-3" alt="Teachers">
-                              
+
                             </div>
                             <div class="col-md-7">
                               <div class="card-body">
@@ -907,12 +982,12 @@
                           </div>
                           </div>
                         </div>
-                         <div class="col-md-6"> 
+                         <div class="col-md-6">
                           <div class="card mb-3">
                           <div class="row no-gutters">
                             <div class="col-md-5">
                               <img src="{{ asset('frontAssets/images/staff/33.jpeg') }}" class="card-img img-thumbnail m-3" alt="Teachers">
-                              
+
                             </div>
                             <div class="col-md-7">
                               <div class="card-body">
@@ -932,12 +1007,12 @@
                           </div>
                           </div>
                         </div>
-                         <div class="col-md-6"> 
+                         <div class="col-md-6">
                           <div class="card mb-3">
                           <div class="row no-gutters">
                             <div class="col-md-5">
                               <img src="{{ asset('frontAssets/images/staff/34.jpeg') }}" class="card-img img-thumbnail m-3" alt="Teachers">
-                              
+
                             </div>
                             <div class="col-md-7">
                               <div class="card-body">
@@ -957,12 +1032,12 @@
                           </div>
                           </div>
                         </div>
-                         <div class="col-md-6"> 
+                         <div class="col-md-6">
                           <div class="card mb-3">
                           <div class="row no-gutters">
                             <div class="col-md-5">
                               <img src="{{ asset('frontAssets/images/staff/35.jpeg') }}" class="card-img img-thumbnail m-3" alt="Teachers">
-                              
+
                             </div>
                             <div class="col-md-7">
                               <div class="card-body">
@@ -982,12 +1057,12 @@
                           </div>
                           </div>
                         </div>
-                         <div class="col-md-6"> 
+                         <div class="col-md-6">
                           <div class="card mb-3">
                           <div class="row no-gutters">
                             <div class="col-md-5">
                               <img src="{{ asset('frontAssets/images/staff/36.jpeg') }}" class="card-img img-thumbnail m-3" alt="Teachers">
-                              
+
                             </div>
                             <div class="col-md-7">
                               <div class="card-body">
@@ -1039,7 +1114,7 @@
       end content Section
     ============================-->
 
-    
+
 
   </main>
   @endsection

@@ -17,7 +17,6 @@ class CreateNotificationsTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->string('notification_file');
-            $table->boolean('new')->nullable();
             $table->timestamps();
         });
     }

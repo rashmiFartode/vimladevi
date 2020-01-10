@@ -25,6 +25,6 @@
 
     <div class="form-group">
         <button type="submit" class="btn btn-success mr-3">Submit</button>
-        <a href="{{ route('notifications.index') }}" class="btn btn-info">Back</a>
+        <a href="{{ route('results.index') }}" class="btn btn-info">Back</a>
     </div>
 </form>

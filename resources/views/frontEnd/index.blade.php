@@ -45,19 +45,53 @@
                     <div class="quick mt-5 main-box">
                         <h4 class="title-heading1 text-center">Quick Links</h4>
                         <ul class="quick-link-ul list p-0 mb-0">
-                            @foreach ($quicklinks as $quicklink)
-                                <li class="quick-link-li p-2"><a href="{{ $quicklink->link }}" class="a1">{{ $quicklink->name }}</a></li>
-                            @endforeach
+                            @if (count($quicklinks)>0)
+                                @foreach ($quicklinks as $quicklink)
+                                    <li class="quick-link-li p-2"><a href="{{ $quicklink->link }}" class="a1">{{ $quicklink->name }}</a></li>
+                                @endforeach
+                            @else
+                                 <h4 class="m-5 text-info">No entry yet!</h4>
+                            @endif
                         </ul>
                     </div>
                     <div class="quick mt-5 main-box">
                         <h4 class="title-heading1 text-center">Official Government Sites</h4>
                         <ul class="quick-link-ul list p-0 mb-0" >
+                            @if (count($governmentSites))
                             @foreach ($governmentSites as $governmentSite)
                                 <li class="quick-link-li p-2"><a href="{{ $governmentSite->link }}" target="_blank" class="a1">{{ $governmentSite->name }}</a></li>
                             @endforeach
 
+                            @else
+                                <h4 class="m-5 text-info">No entry yet!</h4>
+                            @endif
+
                         </ul>
+                    </div>
+
+                    <div class="quick mt-5 main-box">
+                        <h4 class="title-heading1 text-center">Awards</h4>
+                        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="{{ asset('frontAssets/img/vimladeviCollege/awards1.jpg') }}" class="d-block w-100" alt="..." width="100%" height="200px">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ asset('frontAssets/img/vimladeviCollege/awards2.jpg') }}" class="d-block w-100" alt="..." width="100%" height="200px">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ asset('frontAssets/img/vimladeviCollege/awards3.png') }}" class="d-block w-100" alt="..." width="100%" height="200px">
+                                </div>
+                            </div>
+                            <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <!--col-md-3 closed -->
@@ -104,7 +138,7 @@
                         <!--container-fluid row closed -->
                     </div>
                     <!--container-fluid closed -->
-                    <div class="awards mt-5">
+                    {{-- <div class="awards mt-5">
                         <h4 class="title-heading1 text-center">Awards</h4><hr>
                         <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
                             <div class="carousel-inner">
@@ -127,37 +161,43 @@
                                 <span class="sr-only">Next</span>
                             </a>
                         </div>
-                    </div>
+                    </div> --}}
                     <!-- End activity  -->
                 </div>
                 <!--col-md-6 closed -->
                 <div class="col-md-3">
                     <div class="impLinks mt-5 main-box">
                         <h4 class="title-heading1 text-center">Important Links</h4>
+                        @if (count($notifications)>0)
                         <marquee class="p-2" height="170" direction="up" scrollamount="1" scrolldelay="1" onmouseover="this.stop()" onmouseout="this.start()">
                             <ul style="padding: 0px;margin-bottom:0">
-                                <li class="text-left"><i class="fa fa-hand-o-right"></i>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:black"><a target="_blank" href="#" style="color:black;">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</a></span></li>
-
-                                <li class="text-left"><i class="fa fa-hand-o-right"></i>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:black"><a target="_blank" href="#" style="color:black;">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</a></span></li>
-
-                                <li class="text-left"><i class="fa fa-hand-o-right"></i>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:black"><a target="_blank" href="#" style="color:black;">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</a></span></li>
-
-                                <li class="text-left"><i class="fa fa-hand-o-right"></i>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:black"><a target="_blank" href="#" style="color:black;">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</a></span></li>
-
-                                <li class="text-left"><i class="fa fa-hand-o-right"></i>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:black"><a target="_blank" href="#" style="color:black;">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</a></span></li>
+                                @foreach ($notifications as $notification)
+                                <li class="text-left"><i class="fa fa-hand-o-right"></i>&nbsp;&nbsp;&nbsp;&nbsp;<span style="color:black"><a target="_blank" href="{{ 'storage/'.$notification->notification_file }}" style="color:black;">{{ $notification->title }}</a></span></li>
+                                @endforeach
                             </ul>
                         </marquee>
+                        @else
+                            <h4 class="m-5 text-info">No entry yet!</h4>
+                        @endif
                     </div><!-- End important links -->
+
                     <div class="news mt-5 main-box">
                         <h4 class="title-heading1 text-center">News</h4>
                         <marquee class="p-2" height="170" direction="up" scrollamount="1" scrolldelay="1" onmouseover="this.stop()" onmouseout="this.start()">
                             <ul style="padding: 0px; margin-bottom:0">
-                                <li class="text-left">
-                                    <img src="{{ asset('frontAssets/img/new.gif') }}" width="50px" height="50px">
-                                    <span style="color:black">
-                                        <a target="_blank" href="#" style="color:black;">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</a>
-                                    </span>
-                                </li>
+                                @if (count($news)>0)
+                                @foreach ($news as $n)
+                                    <li class="text-left">
+                                        <img src="{{ asset('frontAssets/images/new5.gif') }}" >
+                                        <span style="color:black">
+                                        <a target="_blank" href="{{ route('news', $n->id ) }}" style="color:black;">{{ $n->title }}</a>
+                                        </span>
+                                    </li>
+                                @endforeach
+
+                                @else
+                                    <h4 class="m-5 text-info">No entry yet!</h4>
+                                @endif
                             </ul>
                         </marquee>
                     </div>
@@ -181,21 +221,32 @@
                                 @php
                                     $counter = 0;
                                 @endphp
-                                @foreach ($activities as $activity)
-                                <div class="carousel-item  @if( $counter == 0 ) {{ "active" }}  @endif">
-                                    <div class="card">
-                                        <img src="{{ asset('storage/' . $activity->file) }}" class="d-block w-100 card-img-top" alt="library">
-                                        <div class="card-body">
-                                        <h5 class="text-center">{{ $activity->title }}</h5>
-                                        <p>{{ $activity->description }}</p>
-                                        <a href="#">Read more</a>
+
+                                @if (count($activities)>0)
+                                    @foreach ($activities as $activity)
+                                    <div class="carousel-item  @if( $counter == 0 ) {{ "active" }}  @endif">
+                                        <div class="card">
+                                            <img src="{{ asset('storage/' . $activity->file) }}" class="d-block w-100 card-img-top" alt="library">
+                                            <div class="card-body">
+                                            <h5 class="text-center">{{ $activity->title }}</h5>
+                                            <p>{{ $activity->description }}</p>
+                                            <a href="{{ route('recent_activity', $activity->id)}}">Read more</a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                @php
-                                    $counter = $counter + 1;
-                                @endphp
-                                @endforeach
+                                    @php
+                                        $counter = $counter + 1;
+                                    @endphp
+                                    @endforeach
+                                @else
+                                    <div class="corousel-item">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5 class="text-center text-info">No entry yet!</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
                             </div>
                             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>

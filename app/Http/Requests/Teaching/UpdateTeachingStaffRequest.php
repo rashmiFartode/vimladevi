@@ -24,7 +24,7 @@ class UpdateTeachingStaffRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|string| max:100',
+            'name' => 'required|string|max:100',
             'designation' => 'required|string|sometimes',
             'department' => 'required|string|sometimes',
             'file' => 'required|mimes:jpg,jpeg,png|max:10000|sometimes',

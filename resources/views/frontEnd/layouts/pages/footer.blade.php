@@ -2,13 +2,13 @@
  <!--==========================
     Footer
   ============================-->
-  <footer class="footer-area pt-4">
+  <footer class="footer-area pt-4 mt-3">
         <div class="container">
             <div class="row p-0 d-flex justify-content-between align-items-center">
                 <div class="container">
                     <div class="copyright p-3 text-center text-light">© Copyright <strong>Smt. Vimladevi Ayurvedic Medical College and Hospital</strong>. All Rights Reserved</div>
                     <div class="credits">
-                       
+
                         <!-- Designed by <a href="https://iceico.in">ICEICO TECHNOLOGIES PVT. LTD.</a> -->
                     </div>
                     <div class="container" style="border-top:1px dotted whitesmoke;">

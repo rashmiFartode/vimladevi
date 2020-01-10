@@ -2,7 +2,7 @@
 @section('title','Permissions')
 @section('content-wrapper')
   <!-- </section> -->
-  <section> 
+  <section>
    <div class="banner">
     </div>
   </section>
@@ -18,7 +18,7 @@
           <div class="row">
             <div class="col-md-12">
               <h2 class="title-heading1 text-center mb-4"><b>Permissions</b></h2>
-             
+
             </div>
           </div>
         </div>
@@ -45,10 +45,10 @@
                   <li class="quick-link-li p-2"><a href="https://drive.google.com/open?id=1-mlngZWTGolmyHWKVBGFUVzJ-CdKfvZL" target="_blank"  class="a1">Women's Complaints Committee</a></li>
                   <li class="quick-link-li p-2"><a href="https://drive.google.com/open?id=1kE4_k-qX8PR_dTqPyOywVk8lpOJN3ai_" target="_blank"  class="a1">Anti Ragging Committee</a></li>
                   <li class="quick-link-li p-2"><a href="https://drive.google.com/open?id=11YfA33fQ5pnpstcjFQWOeXEdZzLCanb_" target="_blank"  class="a1">Collaboration with NGOs</a></li>
-                  
+
                 </ul>
               </div>
-              
+
               <div class="quick mt-5 main-box">
                 <h4 class="title-heading1 text-center">Official Government Sites</h4><hr>
                 <ul class="quick-link-ul list p-0">
@@ -83,22 +83,22 @@
                               <h6><b>1. Vice-Chancellor :</b></h6>
                             <ul class="list-none">
                               <li><b>Prof. Dr. Deelip Mhaisekar</b></li>
-                              <li><b>Phone Number :</b>(0253) 2539114 / 6659114 (0253) 2539128 / 6659128</li>
-                              <li><b>Email :</b><a href="">vcoffice@muhs.ac.in</a></li>
+                              <li><b>Phone Number :</b> (0253) 2539114 / 6659114 (0253) 2539128 / 6659128</li>
+                              <li><b>Email :</b><a href=""> vcoffice@muhs.ac.in</a></li>
                               <li><b>Fax Number:</b> (0253) 2539113 / 6659113</li></ul>
                             <h6><b>2. Register :</b></h6>
                             <ul class="list-none">
                               <li><b>Dr. Kalidas D. Chavan</b></li>
-                              <li><b>Email :</b><a href="">registrar@muhs.ac.in</a></li>
-                              <li><b>Phone Number :</b>(0253) 2539294 / 6659294</</li>
-                              <li><b>Fax Number:</b>(0253) 6659295</li>
+                              <li><b>Email :</b> <a href="">registrar@muhs.ac.in</a></li>
+                              <li><b>Phone Number :</b> (0253) 2539294 / 6659294</</li>
+                              <li><b>Fax Number:</b> (0253) 6659295</li>
                             </ul>
-                           <h4 class="title-heading1 text-center">Multiple Prmission Letters From The Various Governing Bodies</h4><hr>
+                           <h4 class="title-heading1 text-center">Multiple Permission Letters From The Various Governing Bodies</h4>
                           <table class="table">
                             <tbody>
                             <tr>
                             <td>
-                              <h6 class="text-center mt-2">AYUSH,<br> Govt. Of India</h6></td>
+                              <h6 class="text-center mt-2">AYUSH, Govt. Of India</h6></td>
                                 <td><a href="https://drive.google.com/file/d/16ZD1uMkHCHuxX3JXUddfi8l4NM8VU3MB/view" target="_blank">Click Here</i></a>
                             </td>
                           </tr>
@@ -110,7 +110,7 @@
                           </tr>
                            <tr>
                             <td>
-                              <h6 class="text-center mt-2">Copy of GR given by<br> Govt. of Maharashtra</h6></td></a>
+                              <h6 class="text-center mt-2">Copy of GR given by Govt. of Maharashtra</h6></td></a>
                             </td>
                                 <td><a href="https://drive.google.com/file/d/0BxXkhBKGpQrmTFYyalh0SW83Y3c/view" target="_blank">Click Here</a></td>
                           </tr>
@@ -129,7 +129,7 @@
       end content Section
     ============================-->
 
-    
+
 
   </main>
   @endsection

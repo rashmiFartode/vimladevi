@@ -21,10 +21,10 @@ Route::get('home', 'HomeController@index')->name('home');
 
 Auth::routes();
 
-Route::middleware(['auth'])->group(function(){
+Route::middleware(['auth'])->group(function () {
 
     Route::resource('quicklink', 'QuickLinkController');
-    Route::resource('notifications', 'NotificationController');
+    Route::resource('important_links', 'NotificationController');
     Route::resource('etenders', 'EtenderController');
     Route::resource('news', 'NewsController');
     Route::resource('activities', 'ActivityController');
@@ -32,7 +32,7 @@ Route::middleware(['auth'])->group(function(){
     Route::resource('blogs', 'BlogController');
     Route::resource('governmentSites', 'GovernmentSiteController');
     Route::resource('results', 'ResultController');
-    Route::resource('galleries', 'GalleryCategoryController');
+    Route::resource('attendances', 'AttendanceController');
 
     Route::get('Gallery-image', 'MultipleUploadController@index')->name('galleryimage');
     Route::post('Gallery-image/upload', 'MultipleUploadController@upload')->name('upload');
@@ -41,7 +41,7 @@ Route::middleware(['auth'])->group(function(){
 });
 
 
-Route::middleware(['auth','admin'])->group(function(){
+Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('users', 'UserController@index')->name('users.index');
     Route::post('users/{users}/make-admin', 'UserController@makeAdmin')->name('users.make-admin');
 });
@@ -77,5 +77,5 @@ Route::get('sports', 'DesignController@sports')->name('sports');
 Route::get('staff', 'DesignController@staff')->name('staff');
 Route::get('swachhaBharat', 'DesignController@swachha_bharat')->name('swachha_bharat');
 Route::get('yoga', 'DesignController@yoga')->name('yoga');
-
-
+Route::get('news/{id}/show', 'DesignController@news')->name('news');
+Route::get('recent_activity/{id}/show', 'DesignController@recent_activity')->name('recent_activity');
