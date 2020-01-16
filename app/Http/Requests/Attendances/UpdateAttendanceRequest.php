@@ -25,8 +25,8 @@ class UpdateAttendanceRequest extends FormRequest
     {
         return [
             'attendanceFor' => 'required|string',
-            'title' => 'required|string|max:100|unique:attendances',
-            'file' => 'required|mimes:png,jpg,jpeg'
+            'title' => 'required|string|max:100',
+            'file' => 'required|mimes:png,jpg,jpeg,pdf,doc,docx,ppt|max:1024'
         ];
     }
 }

@@ -66,7 +66,7 @@ class AttendanceController extends Controller
      */
     public function edit(Attendance $attendance)
     {
-        return view('auth.attendances.index')->with('attendance', $attendance);
+        return view('auth.attendances.create')->with('attendance', $attendance);
     }
 
     /**
@@ -87,6 +87,7 @@ class AttendanceController extends Controller
         }
         $attendance->update($data);
         session()->flash('status', 'Susseccfuly Added');
+        return redirect()->route('attendances.index');
     }
 
     /**

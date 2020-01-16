@@ -1,4 +1,4 @@
- 
+
 
   <!--==========================
     Header
@@ -36,11 +36,11 @@
          </li>
          <li class="menu-has-children"><a href="#">Gallery</a>
             <ul class="text-left">
-              <li><a href="medi_camp">Medical Camp & Workashop,Seminar</a></li>
-              <li><a href="swachhaBharat">Swachha Bharat</a></li>
-              <li><a href="madhumeh">Rashtriy Madhumeh</a></li>
-               <li><a href="cultural">Cultural</a></li>
-               <li><a href="sports">Sports</a></li>
+              <li><a href="{{ route('medi_camp') }}">Medical Camp & Workashop,Seminar</a></li>
+              <li><a href="{{ route('swachhaBharat') }}">Swachha Bharat</a></li>
+              <li><a href="{{ route('madhumeh') }}">Rashtriy Madhumeh</a></li>
+               <li><a href="{{ route('cultural') }}">Cultural</a></li>
+               <li><a href="{{ route('sports') }}">Sports</a></li>
             </ul>
         </li>
         <li><a href="result">Result</a></li>

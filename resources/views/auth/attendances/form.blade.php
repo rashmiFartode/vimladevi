@@ -1,4 +1,4 @@
-<form method="POST" action="{{  isset($attendance) ? route('attendances.update', $attendance->id) : route('attendances.store') }}" enctype="multipart/form-data">
+                   <form method="POST" action="{{  isset($attendance) ? route('attendances.update', $attendance->id) : route('attendances.store') }}" enctype="multipart/form-data">
                         @csrf
                         @if(isset($attendance))
                            @method('PUT')
@@ -55,6 +55,5 @@
                         @endif
                         <div class="form-group">
                             <button type="submit" class="btn btn-success mr-3">Submit</button>
-                            <a href="{{ route('news.index') }}" class="btn btn-info ">Back</a>
                         </div>
                     </form>

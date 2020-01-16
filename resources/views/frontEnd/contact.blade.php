@@ -21,7 +21,7 @@
   display: none; /* Hide all elements by default */
 }
 
-/* Clear floats after rows */ 
+/* Clear floats after rows */
 .row:after {
   content: "";
   display: table;
@@ -65,7 +65,7 @@
   font-size: 14px;
   font-family: "Roboto", sans-serif;
   margin-right: 32px;
-  position: relative; 
+  position: relative;
 }
 .col{
  color:white;
@@ -73,7 +73,7 @@
 </style>
 @endsection
 @section('content-wrapper')
-<section> 
+<section>
   <div class="banner">
   </div>
 </section>
@@ -87,31 +87,44 @@
           <h2 class="title-heading1 text-center"><b>Contact</b></h2><hr>
         </div>
         <div class="col-md-6">
-          <form action="#" class="was-validated">
+            @if($message = Session::get('success'))
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>{{ $message }}</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            @endif
+        <form class="was-validated" action="{{ route('send') }}" method="POST">
+            @csrf
             <div class="form-group">
-              <label for="uname">Username:</label>
-              <input type="text" class="form-control" id="uname" placeholder="Enter username" name="uname" required>
+              {{-- <label for="uname">Name:</label> --}}
+              <input type="text" class="form-control" id="uname" placeholder="Enter name" name="uname" required>
+              @error('uname')  <small class="text-danger">{{ $errors->first('uname') }}</small> @enderror
             </div>
             <div class="form-group">
-              <label for="uname">Email:</label>
+              {{-- <label for="email">Email:</label> --}}
               <input type="text" class="form-control" id="email" placeholder="Enter email" name="email" required>
+              @error('email')  <small class="text-danger">{{ $errors->first('email') }}</small> @enderror
             </div>
             <div class="form-group">
-              <label for="uname">Phone No:</label>
+              {{-- <label for="phone">Phone No:</label> --}}
               <input type="text" class="form-control" id="phone" placeholder="Enter Mobile No" name="phone" required>
+              @error('phone')  <small class="text-danger">{{ $errors->first('phone') }}</small> @enderror
             </div>
             <div class="form-group">
-              <label for="pwd">Subject:</label>
-              <input type="text" class="form-control" id="sub" placeholder="Enter subject" name="sub" required>
+              {{-- <label for="mgs">Message:</label> --}}
+              <input type="text" class="form-control" id="mgs" placeholder="Enter message" name="mgs" required>
+              @error('mgs')  <small class="text-danger">{{ $errors->first('mgs') }}</small> @enderror
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary" name="submit">Submit</button>
           </form>
         </div>
         <div class="col-md-6">
           <label for="add"><b>Address</b></label>
           <p>Address
             Vimaladevi Ayurvedic College, Wandhari,<br>
-            Maharashtra 442406, India 
+            Maharashtra 442406, India
           </p>
           <label for="emailo"><b>Email:</b></label>
           <p> vimladeviayurved@gmail.com</p>

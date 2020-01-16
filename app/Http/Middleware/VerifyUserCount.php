@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use App\User;
 
-class VerifyIsAdmin
+class VerifyUserCount
 {
     /**
      * Handle an incoming request.
@@ -16,11 +16,11 @@ class VerifyIsAdmin
      */
     public function handle($request, Closure $next)
     {
-        if (!auth()->user()->isAdmin()) {
-            session()->flash('warning', "<strong>Denied!</strong>You are authorise pers");
-            return redirect()->route('home');
+        $users = User::all()->count();
+        if ($users >= 10) {
+            session()->flash('warning', "Denied! User can't be more than 10");
+            return redirect()->back();
         }
-
         return $next($request);
     }
 }

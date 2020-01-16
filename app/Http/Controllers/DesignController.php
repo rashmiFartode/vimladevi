@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\GovernmentSite;
 use App\Activity;
+use App\Gallery;
 use App\News;
 use App\QuickLink;
 use App\Notification;
@@ -42,14 +43,6 @@ class DesignController extends Controller
     {
         return view('frontEnd.ayurved');
     }
-    public function contact()
-    {
-        return view('frontEnd.contact');
-    }
-    public function cultural()
-    {
-        return view('frontEnd.cultural');
-    }
     public function dravyaguna()
     {
         return view('frontEnd.dravyaguna');
@@ -66,14 +59,33 @@ class DesignController extends Controller
     {
         return view('frontEnd.kriya');
     }
-    public function madhumeh()
-    {
-        return view('frontEnd.madhumeh');
-    }
+
     public function medi_camp()
     {
-        return view('frontEnd.medi_camp');
+        $medicamp = Gallery::where('category', '=', "1")->get();
+        return view('frontEnd.medi_camp')->with('medicamp', $medicamp);
     }
+    public function swachha_bharat()
+    {
+        $swachhaBharat = Gallery::where('category', '=', "2")->get();
+        return view('frontEnd.swachhaBharat')->with('swachhaBharat', $swachhaBharat);
+    }
+    public function madhumeh()
+    {
+        $madhumeh = Gallery::where('category', '=', "3")->get();
+        return view('frontEnd.madhumeh')->with('madhumeh', $madhumeh);
+    }
+    public function cultural()
+    {
+        $cultural = Gallery::where('category', '=', "4")->get();
+        return view('frontEnd.cultural')->with('culPhotos', $cultural);
+    }
+    public function sports()
+    {
+        $sports = Gallery::where('category', '=', "5")->get();
+        return view('frontEnd.sports')->with('sports', $sports);
+    }
+
     public function panchkarma()
     {
         return view('frontEnd.panchkarma');
@@ -118,17 +130,9 @@ class DesignController extends Controller
     {
         return view('frontEnd.shastra');
     }
-    public function sports()
-    {
-        return view('frontEnd.sports');
-    }
     public function staff()
     {
         return view('frontEnd.staff')->with('staffs', TeachingStaff::paginate(15));
-    }
-    public function swachha_bharat()
-    {
-        return view('frontEnd.swachhaBharat');
     }
     public function yoga()
     {

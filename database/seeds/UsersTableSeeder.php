@@ -13,11 +13,22 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        $admin = User::create([
-            'name' => 'admin',
-            'email' => 'admin@admin.com',
-            'password' => Hash::make('admin123'),
-            'role' => 'admin'
+        $admin = User::where('email', 'admin@admin.com')->first();
+
+        if (!$admin) {
+            User::create([
+                'name' => 'admin',
+                'email' => 'admin@admin.com',
+                'password' => Hash::make('admin123'),
+                'role' => 'admin'
+            ]);
+        }
+
+        $user = User::create([
+            'name' => 'user',
+            'email' => 'user@user.com',
+            'password' => Hash::make('user123'),
+            'role' => 'user'
         ]);
     }
 }

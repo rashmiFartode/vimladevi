@@ -3,7 +3,10 @@
     @if(isset($blog))
         @method('PUT')
     @endif
-
+    <div class="form-group">
+        <label for="blogFor">Blog for</label>
+        <input name="blogFor" id="blogFor" class="form-control input-default @error('blogFor') is-invalid @enderror"  autocomplete="blogFor" autofocus required value=" isset($blog) ? $blog->blogFor : old('content') }}" />
+    </div>
     <div class="form-group">
         <label for="content">Description<sup class="text-danger h6">*</sup></label>
         <textarea name="content" id="content"  class="form-control input-default @error('content') is-invalid @enderror"  autocomplete="content" autofocus cols="15" rows="10" required >{{ isset($blog) ? $blog->content : old('content') }}</textarea>

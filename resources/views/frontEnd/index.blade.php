@@ -183,23 +183,24 @@
 
                     <div class="news mt-5 main-box">
                         <h4 class="title-heading1 text-center">News</h4>
-                        <marquee class="p-2" height="170" direction="up" scrollamount="1" scrolldelay="1" onmouseover="this.stop()" onmouseout="this.start()">
-                            <ul style="padding: 0px; margin-bottom:0">
-                                @if (count($news)>0)
-                                @foreach ($news as $n)
+                        <ul style="padding: 0px; margin-bottom:0">
+                            @if (count($news)>0)
+                            @foreach ($news as $n)
+                                    <marquee class="p-2" height="170" direction="up" scrollamount="1" scrolldelay="1" onmouseover="this.stop()" onmouseout="this.start()">
                                     <li class="text-left">
                                         <img src="{{ asset('frontAssets/images/new5.gif') }}" >
                                         <span style="color:black">
                                         <a target="_blank" href="{{ route('news', $n->id ) }}" style="color:black;">{{ $n->title }}</a>
                                         </span>
                                     </li>
+                                </marquee>
+
                                 @endforeach
 
+                            </ul>
                                 @else
                                     <h4 class="m-5 text-info">No entry yet!</h4>
                                 @endif
-                            </ul>
-                        </marquee>
                     </div>
                     <!-- End News -->
 

@@ -19,31 +19,34 @@ Auth::routes();
 
 Route::get('home', 'HomeController@index')->name('home');
 
-Auth::routes();
-
 Route::middleware(['auth'])->group(function () {
 
-    Route::resource('quicklink', 'QuickLinkController');
-    Route::resource('important_links', 'NotificationController');
-    Route::resource('etenders', 'EtenderController');
-    Route::resource('news', 'NewsController');
-    Route::resource('activities', 'ActivityController');
-    Route::resource('teachingStaffs', 'TeachingStaffController');
-    Route::resource('blogs', 'BlogController');
-    Route::resource('governmentSites', 'GovernmentSiteController');
-    Route::resource('results', 'ResultController');
-    Route::resource('attendances', 'AttendanceController');
+    Route::resource('dashboard/quicklink', 'QuickLinkController');
+    Route::resource('dashboard/dashboard/important_links', 'NotificationController');
+    Route::resource('dashboard/etenders', 'EtenderController');
+    Route::resource('dashboard/news', 'NewsController');
+    Route::resource('dashboard/activities', 'ActivityController');
+    Route::resource('dashboard/teachingStaffs', 'TeachingStaffController');
+    Route::resource('dashboard/blogs', 'BlogController');
+    Route::resource('dashboard/governmentSites', 'GovernmentSiteController');
+    Route::resource('dashboard/results', 'ResultController');
+    Route::resource('dashboard/attendances', 'AttendanceController');
+    Route::resource('dashboard/gallery', 'GalleryController');
 
-    Route::get('Gallery-image', 'MultipleUploadController@index')->name('galleryimage');
-    Route::post('Gallery-image/upload', 'MultipleUploadController@upload')->name('upload');
-    Route::delete('Gallery-image/{galleryMultiple}/delete', 'MultipleUploadController@destroy')->name('galleryimage.destroy');
-    Route::resource('categories', 'CategoryController');
+    Route::get('dashboard/Gallery-image', 'MultipleUploadController@index')->name('galleryimage');
+    Route::post('dashboard/Gallery-image/upload', 'MultipleUploadController@upload')->name('upload');
+    Route::delete('dashboard/Gallery-image/{galleryMultiple}/delete', 'MultipleUploadController@destroy')->name('galleryimage.destroy');
+    Route::resource('dashboard/categories', 'CategoryController');
 });
 
 
 Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('users', 'UserController@index')->name('users.index');
-    Route::post('users/{users}/make-admin', 'UserController@makeAdmin')->name('users.make-admin');
+    Route::get('dashboard/users', 'UserController@index')->name('users.index');
+    Route::get('dashboard/users/create', 'UserController@create')->name('users.create');
+    Route::post('dashboard/users/store', 'UserController@store')->name('users.store');
+    Route::get('dashboard/users/profile', 'UserController@edit')->name('users.edit-profile');
+    Route::put('dashboard/users/profile', 'UsewrController@update')->name('users.update-profile');
+    Route::post('dashboard/users/{users}/make-admin', 'UserController@makeAdmin')->name('users.make-admin');
 });
 
 
@@ -54,7 +57,6 @@ Route::get('admissions', 'DesignController@admission')->name('admission');
 Route::get('agad-tantra', 'DesignController@agad')->name('agad');
 Route::get('attendance', 'DesignController@attendance')->name('attendance');
 Route::get('ayurved', 'DesignController@ayurved')->name('ayurved');
-Route::get('contact', 'DesignController@contact')->name('contact');
 Route::get('cultural', 'DesignController@cultural')->name('cultural');
 Route::get('dravyaguna', 'DesignController@dravyaguna')->name('dravuaguna');
 Route::get('kaumarbhritya', 'DesignController@kaumarbhritya')->name('kaumarbhritya');
@@ -75,7 +77,10 @@ Route::get('shalyatantra', 'DesignController@shalyatantra')->name('shalyatantra'
 Route::get('shastra', 'DesignController@shastra')->name('shastra');
 Route::get('sports', 'DesignController@sports')->name('sports');
 Route::get('staff', 'DesignController@staff')->name('staff');
-Route::get('swachhaBharat', 'DesignController@swachha_bharat')->name('swachha_bharat');
+Route::get('swachhaBharat', 'DesignController@swachha_bharat')->name('swachhaBharat');
 Route::get('yoga', 'DesignController@yoga')->name('yoga');
 Route::get('news/{id}/show', 'DesignController@news')->name('news');
 Route::get('recent_activity/{id}/show', 'DesignController@recent_activity')->name('recent_activity');
+
+Route::get('contact', 'ContactController@index')->name('contact');
+Route::post('send', 'ContactController@send')->name('send');

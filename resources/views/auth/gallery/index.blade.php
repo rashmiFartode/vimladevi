@@ -1,5 +1,5 @@
 @extends('auth.authLayouts.adminlayout')
-@section('title','Attendances')
+@section('title','Gallery')
 @section('customcss')
 <style>
     .btn-info,.btn-success {
@@ -18,16 +18,17 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-6">
-                            <h1>Attendances</h1>
+                            <h1>Gallery</h1>
                         </div>
                         <div class="col-6">
-                            <a class="btn btn-primary float-right" href="{{route('attendances.create')}}">Add</a>
+                            <a class="btn btn-primary float-right" href="{{route('gallery.create')}}">Add</a>
                         </div>
                     </div>
                 </div>
 
                 <div class="card-body">
-                    @if($attendances->count() > 0)
+
+                    @if($galleries->count() > 0)
                     <table class="table">
                         <tr>
                             <td>Sr. no.</td>
@@ -35,17 +36,28 @@
                             <td>File</td>
                             <td></td>
                         </tr>
-                         @foreach ($attendances as $key => $n)
+                         @foreach ($galleries as $key => $gallery)
                         <tr>
-                        <td>{{ ($attendances->currentpage()-1) * $attendances->perpage() + $key + 1 }}</td>
-                        <td>{{ $n->title }}</td>
-
-                            <td><a href="{{asset('storage/' . $n->file) }}" class="btn btn-info btn-sm" target="_blank"> View</a></td>
+                        <td>{{ ($galleries->currentpage()-1) * $galleries->perpage() + $key + 1 }}</td>
+                        <td>
+                            @if ($gallery->category  == "1")
+                                {{   'Medical Camp & Workshop,Seminar' }}
+                            @elseif ($gallery->category  == "2")
+                                {{ 'Swachha Bharat' }}
+                            @elseif ($gallery->category  == "3")
+                                {{ 'Rashtriy Madhumeh' }}
+                            @elseif ($gallery->category  == "4")
+                                {{ 'Cultural' }}
+                            @elseif ( $gallery->category  == "5")
+                                {{  'Sports'  }}
+                            @endif
+                        </td>
+                        <td><img src="{{asset('storage/' . $gallery->file) }}" width="100px" height="100px"/> </td>
                             <td>
-                                <form action="{{ route('attendances.destroy', $n->id) }}" method="POST">
+                                <form action="{{ route('gallery.destroy', $gallery->id) }}" method="POST">
                                     @csrf
                                     @method("DELETE")
-                                    <a href="{{ route('attendances.edit', $n->id) }}"
+                                    <a href="{{ route('gallery.edit', $gallery->id) }}"
                                         class="btn btn-info btn-sm">Edit</a>
                                     <button class="btn btn-danger btn-sm" type="submit">Delete</button>
                                 </form>
@@ -59,9 +71,8 @@
                 </div>
             </div>
         </div>
-
         <div class="col-md-12">
-            {{ $attendances->links() }}
+            {{ $galleries->links() }}
         </div>
     </div>
 </div>

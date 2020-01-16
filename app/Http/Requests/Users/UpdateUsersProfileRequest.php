@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Attendances;
+namespace App\Http\Requests\Users;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateAttendanceRequest extends FormRequest
+class UpdateUsersProfileRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,8 @@ class CreateAttendanceRequest extends FormRequest
     public function rules()
     {
         return [
-            'attendanceFor' => 'required|string',
-            'title' => 'required|string|max:100|unique:attendances',
-            'file' => 'required|mimes:png,jpg,jpeg,pdf,doc,docx,ppt|max:1024|unique:attendances'
+            'name' => 'required',
+            'email' => 'required'
         ];
     }
 }

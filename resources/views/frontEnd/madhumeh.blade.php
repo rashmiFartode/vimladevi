@@ -26,12 +26,12 @@
     transform: scale(1.05);
     box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.15) !important;
   }
-}  
+}
 </style>
 @endsection
 @section('content-wrapper')
 <!-- </section> -->
-<section> 
+<section>
    <div class="banner">
     </div>
   </section>
@@ -67,7 +67,7 @@
                   <li class="quick-link-li p-2"><a href="https://drive.google.com/open?id=11YfA33fQ5pnpstcjFQWOeXEdZzLCanb_" target="_blank"  class="a1">Collaboration with NGOs</a></li>
                 </ul>
               </div>
-              
+
               <div class="quick mt-5 main-box">
                 <h4 class="title-heading1 text-center">Official Government Sites</h4><hr>
                 <ul class="quick-link-ul list p-0">
@@ -88,7 +88,14 @@
                     <div class="col-md-12">
                  <h4 class="title-heading1 text-center">Rashtriy Madhumeh</h4><hr>
                  </div>
-                    <div class="col-md-4 col-lg-4 item">
+                    @foreach ($madhumeh as $item)
+                        <div class="col-md-4 col-lg-4 item">
+                            <a class="lightbox" href="{{ asset('storage/'.$item->file) }}">
+                                <img class="img-fluid image scale-on-hover" src="{{ asset('storage/'.$item->file) }}">
+                            </a>
+                        </div>
+                    @endforeach
+                    {{-- <div class="col-md-4 col-lg-4 item">
                         <a class="lightbox" href="{{ asset('frontAssets/images/madhumeh/1.jpg') }}">
                             <img class="img-fluid image scale-on-hover" src="{{ asset('frontAssets/images/madhumeh/1.jpg') }}">
                         </a>
@@ -197,11 +204,11 @@
                         <a class="lightbox" href="{{ asset('frontAssets/images/madhumeh/20.jpg') }}">
                             <img class="img-fluid image scale-on-hover" src="{{ asset('frontAssets/images/madhumeh/20.jpg') }}">
                         </a>
-                    </div>
+                    </div> --}}
                 </div>
               </div>
             </div>
-          </div> 
+          </div>
         </div>
       </div>
     </div>

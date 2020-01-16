@@ -4,7 +4,7 @@
 <link href="{{ asset('frontAssets/lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css" />
 <style>
-  
+
 .gallery-block.grid-gallery a:hover{
   opacity: 0.8;
 }
@@ -27,12 +27,12 @@
     transform: scale(1.05);
     box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.15) !important;
   }
-}  
+}
 </style>
 @endsection
 @section('content-wrapper')
 <!-- </section> -->
-<section> 
+<section>
    <div class="banner">
     </div>
   </section>
@@ -68,7 +68,7 @@
                   <li class="quick-link-li p-2"><a href="https://drive.google.com/open?id=11YfA33fQ5pnpstcjFQWOeXEdZzLCanb_" target="_blank"  class="a1">Collaboration with NGOs</a></li>
                 </ul>
               </div>
-              
+
               <div class="quick mt-5 main-box">
                 <h4 class="title-heading1 text-center">Official Government Sites</h4><hr>
                 <ul class="quick-link-ul list p-0">
@@ -89,12 +89,19 @@
                     <div class="col-md-12">
                  <h4 class="title-heading1 text-center">Sports</h4><hr>
                  </div>
+                 @foreach ($sports as $item)
                     <div class="col-md-4 col-lg-4 item">
+                        <a class="lightbox" href="{{ asset('storage/'.$item->file) }}">
+                                <img class="img-fluid image scale-on-hover" src="{{ asset('storage/'.$item->file) }}">
+                            </a>
+                    </div>
+                 @endforeach
+                    {{-- <div class="col-md-4 col-lg-4 item">
                         <a class="lightbox" href="{{ asset('frontAssets/images/icon/3.jpeg') }}">
                             <img class="img-fluid image scale-on-hover" src="{{ asset('frontAssets/images/icon/3.jpeg') }}">
                         </a>
                     </div>
-                  
+
                     <div class="col-md-4 col-lg-4 item">
                         <a class="lightbox" href="{{ asset('frontAssets/images/icon/5.jpeg') }}">
                             <img class="img-fluid image scale-on-hover" src="{{ asset('frontAssets/images/icon/5.jpeg') }}">
@@ -140,23 +147,23 @@
                             <img class="img-fluid image scale-on-hover" src="{{ asset('frontAssets/images/icon/13.jpeg') }}">
                         </a>
                     </div>
-                   
+
                     <div class="col-md-4 col-lg-4 item">
                         <a class="lightbox" href="{{ asset('frontAssets/images/icon/15.jpeg') }}">
                             <img class="img-fluid image scale-on-hover" src="{{ asset('frontAssets/images/icon/15.jpeg') }}">
                         </a>
-                    </div>
-                   
+                    </div> --}}
+
                 </div>
               </div>
             </div>
-          </div> 
+          </div>
         </div>
       </div>
     </div>
   </section>
-      
-        
+
+
 
   </main>
   @endsection
@@ -165,5 +172,5 @@
         <script>
             baguetteBox.run('.grid-gallery', { animation: 'slideIn'});
         </script>
-  
+
 @endsection

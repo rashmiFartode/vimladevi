@@ -5,9 +5,9 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 
-class Attendance extends Model
+class Gallery extends Model
 {
-    protected $fillable = ['attendanceFor', 'title', 'file'];
+    protected $fillable = ['category', 'file'];
 
     public function deleteFile()
     {
