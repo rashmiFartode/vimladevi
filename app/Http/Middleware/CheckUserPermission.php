@@ -3,9 +3,8 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use App\User;
 
-class VerifyUserCount
+class CheckUserPermission
 {
     /**
      * Handle an incoming request.
@@ -16,11 +15,8 @@ class VerifyUserCount
      */
     public function handle($request, Closure $next)
     {
-        $users = User::all()->count();
-        if ($users >= 10) {
-            session()->flash('warning', "Denied! User can't be more than 10");
-            return redirect()->route('home');
-        }
+        $auth = auth()->user()->auth;
+        
         return $next($request);
     }
 }

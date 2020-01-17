@@ -41,12 +41,12 @@ Route::middleware(['auth'])->group(function () {
 
 
 Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('dashboard/users', 'UserController@index')->name('users.index');
-    Route::get('dashboard/users/create', 'UserController@create')->name('users.create');
-    Route::post('dashboard/users/store', 'UserController@store')->name('users.store');
-    Route::get('dashboard/users/profile', 'UserController@edit')->name('users.edit-profile');
-    Route::put('dashboard/users/profile', 'UsewrController@update')->name('users.update-profile');
-    Route::post('dashboard/users/{users}/make-admin', 'UserController@makeAdmin')->name('users.make-admin');
+    Route::resource('dashboard/users', 'UserController');
+
+    //user self profile
+    Route::get('dashboard/auth/profile', 'UserProfileController@edit')->name('auth.edit-profile');
+    Route::put('dashboard/auth/profile', 'UserProfileController@update')->name('auth.update-profile');
+    // Route::post('dashboard/users/{users}/make-admin', 'UserProfileController@makeAdmin')->name('users.make-admin');
 });
 
 

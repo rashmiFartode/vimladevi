@@ -24,7 +24,7 @@
                 </div>
 
                 <div class="card-body">
-                    <form action="{{ route('users.update-profile', auth()->user()->id)}}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('auth.update-profile', auth()->user()->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
                         <div class="form-group">
@@ -33,7 +33,7 @@
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="email" name="email" id="email" class="form-control" value="{{ $user->email}}">
+                            <input type="email" name="email" id="email" class="form-control" value="{{ $user->email }}">
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-success">Submit</button>

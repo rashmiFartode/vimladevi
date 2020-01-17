@@ -5,7 +5,7 @@
     @endif
     <div class="form-group">
         <label for="blogFor">Blog for</label>
-        <input name="blogFor" id="blogFor" class="form-control input-default @error('blogFor') is-invalid @enderror"  autocomplete="blogFor" autofocus required value=" isset($blog) ? $blog->blogFor : old('content') }}" />
+        <input name="blogFor" id="blogFor" class="form-control input-default @error('blogFor') is-invalid @enderror"  autocomplete="blogFor" autofocus required value="{{ isset($blog) ? $blog->blogFor : old('content') }}" />
     </div>
     <div class="form-group">
         <label for="content">Description<sup class="text-danger h6">*</sup></label>

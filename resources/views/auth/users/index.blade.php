@@ -35,6 +35,7 @@
                             <td>Avatar</td>
                             <td>Name</td>
                             <td>Email</td>
+                            <td>Authorization</td>
                             <td></td>
                         </tr>
                          @foreach ($users as $key => $user)
@@ -43,15 +44,25 @@
                         <td><img src="{{ Gravatar::src($user->email) }}" alt="{{ $user->name }}" style="border-radius:50%" width="50px" height="50px"></td>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
+                        <td>{{ $user->auth }}</td>
                         <td>
-                            @if (!$user->isAdmin())
-                            <form action="{{ route('users.make-admin', $user->id) }}" method="POST">
+                            <form action="{{ route('users.destroy', $user->id) }}" method="POST">
                                 @csrf
-                                <button class="bphptn btn-success btn-sm" type="submit">Make admin</button>
+                                @method("DELETE")
+                                <a href="{{ route('users.edit', $user->id) }}"
+                                    class="btn btn-info btn-sm">Edit</a>
+                                <button class="btn btn-danger btn-sm" type="submit">Delete</button>
                             </form>
+                            {{--
+                                @if (!$user->isAdmin())
+                                <form action="{{ route('users.make-admin', $user->id) }}" method="POST">
+                                    @csrf
+                                    <button class="bphptn btn-success btn-sm" type="submit">Make admin</button>
+                                </form>
 
-                            @endif
-                        </td>
+                                @endif
+                            --}}
+                         </td>
                         </tr>
                         @endforeach
                     </table>
